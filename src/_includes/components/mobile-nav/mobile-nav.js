@@ -1,22 +1,6 @@
 // 手機選單：開關、子選單展開、開啟時鎖定背景捲動
-// （原 main.js 的 jQuery 寫法移植成標準 DOM API）
-
-function lockBodyScroll() {
-    const hasScrollbar = window.innerWidth > document.documentElement.clientWidth;
-
-    if (hasScrollbar) {
-        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-        document.body.style.overflow = "hidden";
-        document.body.style.paddingRight = scrollbarWidth + "px";
-    } else {
-        document.body.style.overflow = "hidden";
-    }
-}
-
-function unlockBodyScroll() {
-    document.body.style.overflow = "";
-    document.body.style.paddingRight = "";
-}
+// （原 main.js 的 jQuery 寫法移植成標準 DOM API；
+//   lockBodyScroll / unlockBodyScroll 來自 ui/modals/modals.js）
 
 document.addEventListener("DOMContentLoaded", function () {
     const navToggle = document.querySelector(".nav-toggle");

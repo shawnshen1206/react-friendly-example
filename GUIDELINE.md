@@ -116,7 +116,7 @@ permalink: 檔名.html                   # 輸出到 dist/ 的檔名
 - SCSS 寫法沿用既有風格（巢狀、`&` 修飾）；顏色用 `_var.scss` 變數
 - 每個元件的 scss 只寫自己的 class；**A 元件的 scss 禁止出現 B 元件的 class**
 - 禁止依頁面覆寫元件（`.page-xxx .button {...}`）
-- 間距優先用既有工具 class（`flex-row column gap-16` 等）；簡單的一次性間距允許行內 style（與既有切版習慣一致），但**不可**用行內 style 寫顏色、字級、尺寸
+- 間距優先用既有工具 class（`flex-row column gap-16` 等）；簡單的一次性間距與表格欄寬（`<col style="width:...">`）允許行內 style（與既有切版習慣一致），但**不可**用行內 style 寫顏色與字級
 
 ---
 

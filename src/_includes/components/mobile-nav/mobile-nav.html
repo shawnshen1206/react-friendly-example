@@ -4,7 +4,7 @@
         <ul class="mobile-menu">
             {% for item in menuItems %}
             <li>
-                <a href="{{ item.href }}"{% if item.children %} class="dropdown"{% endif %} title="{{ item.label }}">{{ item.label }}</a>
+                <a href="{{ item.href }}"{% if item.children or item.dropdown %} class="dropdown"{% endif %} title="{{ item.label }}">{{ item.label }}</a>
                 {% if item.children %}
                 <ul>
                     {% for child in item.children %}
