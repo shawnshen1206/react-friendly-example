@@ -120,6 +120,7 @@ permalink: 檔名.html                   # 輸出到 dist/ 的檔名
 - 每個元件的 scss 只寫自己的 class；**A 元件的 scss 禁止出現 B 元件的 class**
 - 禁止依頁面覆寫元件（`.page-xxx .button {...}`）
 - 間距優先用既有工具 class（`flex-row column gap-16` 等）；簡單的一次性間距與表格欄寬（`<col style="width:...">`）允許行內 style（與既有切版習慣一致），但**不可**用行內 style 寫顏色與字級
+- **數值落在標準刻度**：間距用 4 的倍數、字級用既有 rem 階；避免 13px、9.5px 這類刻度外的值——React（Tailwind）端只能翻成 arbitrary value（`text-[13px]`），增加成本（見 §7-1）
 
 ---
 
@@ -183,7 +184,7 @@ select2 類多選、日期選擇、表單驗證、資料載入：保留原生元
 |---|---|
 | `layouts/page-shell.html` | route layout（Next.js `layout.tsx`、React Router `<Outlet />` 外層） |
 | `components/xxx/`、`ui/xxx/` | 一個 component 資料夾（`Xxx.tsx` + 同名 scss） |
-| 元件的 `_xxx.scss` | **原樣複製**到元件旁 `import './xxx.scss'`，不改寫 |
+| 元件的 `_xxx.scss` | **樣式規格**：逐元件翻成 Tailwind utility 寫在 `className`（見 §7-1），SCSS 本身不進 React |
 | 元件的 `xxx.js` | 行為規格：改寫成該元件的 `useState` / 事件處理（DOM 操作 → state 驅動） |
 | `{% include %}` | `<Xxx />` |
 | `{% set xxx %}` | props |
@@ -191,12 +192,37 @@ select2 類多選、日期選擇、表單驗證、資料載入：保留原生元
 | `.open`、`.active`、`.done`、`.error` 狀態 class | `useState` 布林 / props（`className={open ? "x open" : "x"}`） |
 | `<dialog>` + `showModal()` | React 可沿用 dialog，或換 Dialog 元件 |
 | 原生 `<select multiple>` 佔位 | react-select 等多選套件 |
-| `_var.scss` 顏色變數 | 全域引入一次，元件照用 `var(--...)` |
+| `_var.scss` 顏色變數 | 映射到 Tailwind theme（v4 `@theme`、v3 `theme.colors`），utility 直接用 `text-primary`、`bg-primary-light` 等 |
 
 accordion 的「一次只開一列」在本範本用全域 DOM 查詢（`document.querySelectorAll(".accordion-btn.open")`）實作，跨整頁所有表格。轉 React 時改由各 accordion 元件自管狀態（記住開啟的列 index），不要跨元件共用，否則同頁多個表格會互相關閉。
 
 HTML → JSX 為機械式替換：`class`→`className`、標籤自閉合、`{# #}`→`{/* */}`。
-CSS 不需任何翻譯：交付的樣式即正式環境的最終樣式。
+
+### 7-1. 樣式：SCSS → Tailwind utility
+
+React 端走 Tailwind-first：**SCSS 不原樣搬，而是當每個元件的「樣式規格」**，由 React 端把每個元素的樣式翻成 Tailwind utility 寫在 `className`。設計端不需要懂 Tailwind——照既有方式寫語意 class + SCSS 即可，翻譯是 React 端的工作。
+
+降低翻譯成本的關鍵是**數值落在 Tailwind 刻度上**（間距用 4 的倍數、字級用既有 rem 階）；落在刻度外的值（如 13px）在 Tailwind 只能寫成 arbitrary value `text-[13px]`。
+
+工具 class 對照（`_utilities.scss` → Tailwind）：
+
+| 本專案 | Tailwind |
+|---|---|
+| `flex-row` / `flex-row column` | `flex` / `flex flex-col` |
+| `gap-8` / `gap-16` / `gap-24` / `gap-40` | `gap-2` / `gap-4` / `gap-6` / `gap-10` |
+| `justify-content-between` / `align-items-center` | `justify-between` / `items-center` |
+| `text-md` / `text-lg` / `text-xl`（1.125 / 1.25 / 1.5rem） | `text-lg` / `text-xl` / `text-2xl` |
+| `text-center` / `hidden` / `w100` | `text-center` / `hidden` / `w-full` |
+| `text-red` / `text-blue` / `text-gray` | `text-danger` / `text-primary` / `text-muted`（依 theme 命名） |
+
+間距／尺寸刻度（rem → Tailwind）：
+
+| rem | px | Tailwind |
+|---|---|---|
+| 0.25 / 0.5 / 0.75 / 1 | 4 / 8 / 12 / 16 | `1` / `2` / `3` / `4` |
+| 1.25 / 1.5 / 2 / 2.5 / 3 | 20 / 24 / 32 / 40 / 48 | `5` / `6` / `8` / `10` / `12` |
+
+元件的語意 class（`.accordion-btn`、`.modals`…）：翻成該元素上的 utility 叢集，SCSS 內容就是逐條對照的依據。
 
 ---
 
@@ -209,6 +235,7 @@ CSS 不需任何翻譯：交付的樣式即正式環境的最終樣式。
 - [ ] class 命名沿用既有系統；新顏色定義在 `_var.scss`
 - [ ] 放對桶：整頁模板 → `layouts/`；會用到其他元件 → `components/`；零依賴 → `ui/`
 - [ ] 只用了 §2 白名單內的模板語法
+- [ ] 數值落在標準刻度（4 的倍數 / 既有 rem 階）；偏離值已確認必要（見 §7-1）
 
 ---
 

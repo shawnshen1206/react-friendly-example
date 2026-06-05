@@ -10,7 +10,7 @@
 
 - 一個元件一個資料夾（HTML、SCSS、JS 同住），頁面是元件的組合
 - jQuery 換成各元件自己的 vanilla JS（標準 DOM API）
-- 轉換成 React 時，HTML→JSX 是機械式替換，CSS 原樣沿用，JS 是現成的行為規格
+- 轉換成 React 時，HTML→JSX 是機械式替換，SCSS 是樣式規格（React 端用 Tailwind 翻譯，見 GUIDELINE §7），JS 是現成的行為規格
 
 ## 怎麼執行
 
