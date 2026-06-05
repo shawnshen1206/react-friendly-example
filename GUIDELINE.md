@@ -98,6 +98,7 @@ permalink: 檔名.html                   # 輸出到 dist/ 的檔名
 
 - 區塊順序 = include 的行序；調整版面 = 調整行序
 - 重複資料（表格列、選項清單）寫在 front matter，元件用 `{% for %}` 渲染；範例資料放 2~3 筆即可
+- 短欄位（編號、時間、標題）資料化放 front matter；**長文／格式化內容**（AI 回答、免責聲明全文）直接寫在元件當樣式示範，不進 front matter——它在正式環境是 API 回傳或 markdown 渲染，這裡只示範它的長相
 - 一次性版面直接寫在頁面檔，不抽元件
 
 ### 3-3. 什麼該切成元件
@@ -157,14 +158,15 @@ select2 類多選、日期選擇、表單驗證、資料載入：保留原生元
 |---|---|
 | `ui/breadcrumb` | include 前 `{% set breadcrumbItems = [{ label, href }] %}`；最後一項不給 `href` = 目前頁 |
 | `ui/pagination-input` | include 前 set `pagerCurrent`、`pagerTotal` |
-| `components/step-btn` | front matter `steps:`（`label`、`done`）；include 前 set `stepPrevHref`、`stepNextHref` |
+| `components/step-btn-wrap` | front matter `steps:`（`label`、`done`）；include 前 set `stepPrevHref`、`stepNextHref` |
 | `components/multi-select-box` | front matter `fields:`（`label`、`placeholder`、`options`（`text`/`selected`）、`preview`、`error` 選填） |
-| `components/sources-block` | front matter `sources:`（`no`、`file`、`dataset`、`title`、`time`、`content`、`note1`、`note2`、`reference`） |
-| `components/qa-detail-info` | front matter `conversation:`（`chatroomId`、`id`、`time`、`intent`、`userMessage`、`satisfaction`、`feedback`） |
+| `components/sources-block` | front matter `sources:`（`no`、`file`、`dataset`、`title`、`time`、`content`、`note1`、`note2`、`reference`）；每筆用子元件 `source-row.html` 渲染 |
+| `components/qa-detail-info` | front matter `conversation:`（`chatroomId`、`id`、`time`、`intent`、`userMessage`、`satisfaction`、`feedback`）；AI 回答內容為長文示範，依 §3-2 寫死在元件 |
 
 ### 自動引入
 
 `header`（內含 mobile-nav）、`footer`（內含 disclaimer-modal）由 `page-shell` 提供，頁面不需 include。
+含子元件的元件：`sources-block`（含 `source-row`）、`header`（含 `mobile-nav`）、`footer`（含 `disclaimer-modal`）。
 
 ### 純樣式 / 純行為元件（直接寫 class）
 
