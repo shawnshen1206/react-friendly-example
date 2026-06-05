@@ -46,8 +46,10 @@ react-friendly-example/
 | 桶 | 判斷句 | 例 |
 |---|---|---|
 | `layouts/` | 是整頁的**模板**嗎？ | base、page-shell |
-| `components/` | 它的 html/scss **會用到其他元件**嗎？（大） | header、sources-block、multi-select-box |
+| `components/` | 它的 html / scss / js **會用到其他元件**，或是某大元件的**專屬子片段**嗎？（大） | header、sources-block、multi-select-box、mobile-nav |
 | `ui/` | **不依賴任何其他元件**的最小單位？（小） | button、modals、pagination-input |
+
+「專屬子片段」指由某個大元件 include、不會單獨使用的部分：`mobile-nav`（header 的手機版選單，共用 header 的 `menuItems`、行為依賴 `modals.js`）、`disclaimer-modal`（footer 的免責聲明跳窗，套用 `modals` 的樣式）。它們放在 `components/` 而非 `ui/`。
 
 ### 1-2. 元件檔案規則
 
@@ -160,7 +162,7 @@ select2 類多選、日期選擇、表單驗證、資料載入：保留原生元
 | `ui/pagination-input` | include 前 set `pagerCurrent`、`pagerTotal` |
 | `components/step-btn-wrap` | front matter `steps:`（`label`、`done`）；include 前 set `stepPrevHref`、`stepNextHref` |
 | `components/multi-select-box` | front matter `fields:`（`label`、`placeholder`、`options`（`text`/`selected`）、`preview`、`error` 選填） |
-| `components/sources-block` | front matter `sources:`（`no`、`file`、`dataset`、`title`、`time`、`content`、`note1`、`note2`、`reference`）；每筆用子元件 `source-row.html` 渲染 |
+| `components/sources-block` | front matter `sources:`（`no`、`file`、`dataset`、`title`、`time`、`content`、`note1`、`note2`、`reference`）；每筆用子元件 `source-row.html` 渲染。外層的 `.sources-block` 是設計師原有的語意／JS 鉤子 class，本身不帶樣式（視覺來自 `.block` + default-table），刻意保留 |
 | `components/qa-detail-info` | front matter `conversation:`（`chatroomId`、`id`、`time`、`intent`、`userMessage`、`satisfaction`、`feedback`）；AI 回答內容為長文示範，依 §3-2 寫死在元件 |
 
 ### 自動引入
@@ -190,6 +192,8 @@ select2 類多選、日期選擇、表單驗證、資料載入：保留原生元
 | `<dialog>` + `showModal()` | React 可沿用 dialog，或換 Dialog 元件 |
 | 原生 `<select multiple>` 佔位 | react-select 等多選套件 |
 | `_var.scss` 顏色變數 | 全域引入一次，元件照用 `var(--...)` |
+
+accordion 的「一次只開一列」在本範本用全域 DOM 查詢（`document.querySelectorAll(".accordion-btn.open")`）實作，跨整頁所有表格。轉 React 時改由各 accordion 元件自管狀態（記住開啟的列 index），不要跨元件共用，否則同頁多個表格會互相關閉。
 
 HTML → JSX 為機械式替換：`class`→`className`、標籤自閉合、`{# #}`→`{/* */}`。
 CSS 不需任何翻譯：交付的樣式即正式環境的最終樣式。
