@@ -1,42 +1,36 @@
 .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    overflow-y: auto;
-}
-
-.modal.is-open {
-    display: block;
-}
-
-body:has(.modal.is-open) {
+    width: calc(100% - var(--space-10));
+    max-height: calc(100vh - 112px);
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
     overflow: hidden;
 }
 
-.modal__backdrop {
-    position: fixed;
-    inset: 0;
-    background-color: var(--color-backdrop);
-}
-
-.modal__dialog {
-    position: relative;
-    width: 100%;
-    margin: 56px auto;
-    padding: 0 var(--space-6);
+.modal:popover-open {
     animation: modal-fade-in-down 0.3s ease-out;
 }
 
-.modal__dialog--sm { max-width: 560px; }
-.modal__dialog--md { max-width: 900px; }
-.modal__dialog--lg { max-width: 1200px; }
+.modal::backdrop {
+    background-color: var(--color-backdrop);
+}
 
-.modal__panel {
-    position: relative;
-    background-color: var(--color-surface);
-    border-radius: var(--radius-md);
+body:has(.modal:popover-open) {
     overflow: hidden;
+}
+
+.modal--sm {
+    max-width: 560px;
+}
+
+.modal--md {
+    max-width: 900px;
+}
+
+.modal--lg {
+    max-width: 1200px;
 }
 
 .modal__close {

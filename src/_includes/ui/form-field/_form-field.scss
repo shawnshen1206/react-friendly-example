@@ -1,4 +1,4 @@
-.form-field {
+﻿.form-field {
     display: flex;
     align-items: center;
 }
@@ -26,7 +26,7 @@
     color: var(--color-danger);
 }
 
-.form-field.is-error .form-field__error {
+.form-field--error .form-field__error {
     display: block;
 }
 

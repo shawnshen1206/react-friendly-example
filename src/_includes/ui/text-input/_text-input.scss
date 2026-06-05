@@ -1,4 +1,4 @@
-.text-input {
+﻿.text-input {
     width: 100%;
     padding: 0.625rem var(--space-2);
     font-size: var(--text-base);
@@ -25,6 +25,6 @@
     cursor: not-allowed;
 }
 
-.text-input.is-error {
+.text-input--error {
     border-color: var(--color-danger);
 }

@@ -1,20 +1,18 @@
-<div class="mobile-nav" id="mobile-nav">
-    <div class="mobile-nav__backdrop" data-toggle="#mobile-nav"></div>
+<div class="mobile-nav" id="mobile-nav" popover>
     <ul class="mobile-nav__menu">
         {% for item in menuItems %}
         <li class="mobile-nav__item">
             {% if item.children %}
-            <button type="button" class="mobile-nav__link mobile-nav__link--dropdown" data-toggle="closest:li"
-                aria-expanded="false">
-                {{ item.label }}
-            </button>
-            <ul class="mobile-nav__submenu">
-                {% for child in item.children %}
-                <li class="mobile-nav__subitem">
-                    <a href="{{ child.href }}" class="mobile-nav__sublink">{{ child.label }}</a>
-                </li>
-                {% endfor %}
-            </ul>
+            <details class="mobile-nav__dropdown">
+                <summary class="mobile-nav__link mobile-nav__link--dropdown">{{ item.label }}</summary>
+                <ul class="mobile-nav__submenu">
+                    {% for child in item.children %}
+                    <li class="mobile-nav__subitem">
+                        <a href="{{ child.href }}" class="mobile-nav__sublink">{{ child.label }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </details>
             {% else %}
             <a href="{{ item.href }}" class="mobile-nav__link">{{ item.label }}</a>
             {% endif %}

@@ -4,27 +4,18 @@
         <span class="sources-table__note">(挑選規則 16取8；使用模型：GPT 4o)</span>
     </header>
 
-    <div class="sources-table__body data-table__scroll">
-        <table class="data-table">
-            <colgroup>
-                <col class="sources-table__col-toggle">
-                <col class="sources-table__col-no">
-                <col class="sources-table__col-file">
-                <col class="sources-table__col-dataset">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th class="data-table__th"></th>
-                    <th class="data-table__th">序號</th>
-                    <th class="data-table__th">檔案</th>
-                    <th class="data-table__th">資料集</th>
-                </tr>
-            </thead>
+    <div class="sources-table__scroll">
+        <div class="sources-table__grid">
+            <div class="sources-table__head">
+                <span class="sources-table__th"></span>
+                <span class="sources-table__th">序號</span>
+                <span class="sources-table__th">檔案</span>
+                <span class="sources-table__th">資料集</span>
+            </div>
 
-            {# @repeat: 參考來源列 #}
             {% for source in sources %}
             {% include "components/sources-table/source-accordion-row.html" %}
             {% endfor %}
-        </table>
+        </div>
     </div>
 </section>

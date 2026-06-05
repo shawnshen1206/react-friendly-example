@@ -4,9 +4,8 @@
     </a>
 
     <ol class="step-nav__nodes">
-        {# @repeat: 步驟節點 #}
         {% for step in steps %}
-        <li class="step-nav__node{% if step.done %} is-done{% endif %}">{{ step.label }}</li>
+        <li class="step-nav__node{% if step.done %} step-nav__node--done{% endif %}">{{ step.label }}</li>
         {% endfor %}
     </ol>
 

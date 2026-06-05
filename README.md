@@ -9,7 +9,7 @@
 這個範本在切版階段就完成元件切分：
 
 - 一個元件一個資料夾（HTML 與 SCSS 同住），頁面是元件的組合
-- 樣式數值集中在 design tokens；互動只用一種宣告式寫法（`data-toggle`），不用 jQuery
+- 互動用瀏覽器原生功能（popover、`<details>`），整個專案沒有 JS、沒有 jQuery
 - 轉換成 React 時，HTML→JSX 是機械式替換，CSS 原樣沿用
 
 ## 怎麼執行

@@ -1,6 +1,5 @@
 export default function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy({ "src/images": "images" });
-    eleventyConfig.addPassthroughCopy({ "src/js": "js" });
 
     eleventyConfig.setServerOptions({
         watch: ["dist/css/**/*.css"],

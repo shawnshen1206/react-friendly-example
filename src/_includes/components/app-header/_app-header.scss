@@ -38,7 +38,7 @@
     cursor: pointer;
 }
 
-.app-header__nav-toggle[aria-expanded="true"] {
+body:has(.mobile-nav:popover-open) .app-header__nav-toggle {
     background-image: url(../images/menubar_close.png);
 }
 

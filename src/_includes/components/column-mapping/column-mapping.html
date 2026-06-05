@@ -7,7 +7,6 @@
         </header>
 
         <div class="column-mapping__fields">
-            {# @repeat: 對應欄位 #}
             {% for field in fields %}
             <div class="form-field">
                 <label class="form-field__label">{{ field.label }}</label>
@@ -34,12 +33,11 @@
         </header>
 
         <div class="column-mapping__fields">
-            {# @repeat: 預覽欄位 #}
             {% for field in fields %}
-            <div class="form-field{% if field.error %} is-error{% endif %}">
+            <div class="form-field{% if field.error %} form-field--error{% endif %}">
                 <label class="form-field__label">{{ field.label }}</label>
                 <div class="form-field__control">
-                    <input type="text" class="text-input{% if field.error %} is-error{% endif %}"
+                    <input type="text" class="text-input{% if field.error %} text-input--error{% endif %}"
                         value="{{ field.preview }}" disabled>
                     {% if field.error %}
                     <span class="form-field__error">{{ field.error }}</span>

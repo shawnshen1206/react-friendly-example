@@ -1,21 +1,22 @@
 .mobile-nav {
-    display: none;
     position: fixed;
     top: var(--header-height);
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 99;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
 }
 
-.mobile-nav__backdrop {
-    position: absolute;
-    inset: 0;
+.mobile-nav::backdrop {
     background-color: var(--color-backdrop-dark);
 }
 
 .mobile-nav__menu {
-    position: relative;
     max-height: 100%;
     overflow-y: auto;
     background-color: var(--color-surface);
@@ -30,6 +31,11 @@
     font-size: var(--text-base);
     text-align: left;
     cursor: pointer;
+    list-style: none;
+}
+
+.mobile-nav__link::-webkit-details-marker {
+    display: none;
 }
 
 .mobile-nav__link--dropdown::after {
@@ -39,14 +45,6 @@
     height: 22px;
     background: url(../images/icon_header_arrowdown_black.png) no-repeat center / contain;
     position: absolute;
-}
-
-.mobile-nav__submenu {
-    display: none;
-}
-
-.mobile-nav__item.is-open .mobile-nav__submenu {
-    display: block;
 }
 
 .mobile-nav__subitem {
@@ -63,11 +61,17 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .mobile-nav.is-open {
-        display: block;
+    body:has(.mobile-nav:popover-open) {
+        overflow: hidden;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .mobile-nav:popover-open {
+        display: none;
     }
 
-    body:has(.mobile-nav.is-open) {
-        overflow: hidden;
+    .mobile-nav::backdrop {
+        display: none;
     }
 }
