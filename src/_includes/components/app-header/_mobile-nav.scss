@@ -1,0 +1,80 @@
+/* ===== Component: MobileNav（AppHeader 的子元件） =====
+   對應 React：<MobileNav items isOpen onClose />
+   is-open = isMenuOpen state。
+*/
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+}
+
+.mobile-nav__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-backdrop-dark);
+}
+
+.mobile-nav__menu {
+    position: relative;
+    max-height: 100%;
+    overflow-y: auto;
+    background-color: var(--color-surface);
+}
+
+.mobile-nav__link {
+    display: block;
+    width: 100%;
+    padding: var(--space-3) var(--space-6);
+    border: 0;
+    background: transparent;
+    font-size: var(--text-base);
+    text-align: left;
+    cursor: pointer;
+}
+
+.mobile-nav__link--dropdown::after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 22px;
+    background: url(../images/icon_header_arrowdown_black.png) no-repeat center / contain;
+    position: absolute;
+}
+
+/* 子選單：父層 li 有 is-open 才顯示 */
+.mobile-nav__submenu {
+    display: none;
+}
+
+.mobile-nav__item.is-open .mobile-nav__submenu {
+    display: block;
+}
+
+.mobile-nav__subitem {
+    border-top: 1px solid var(--color-border-default);
+}
+
+.mobile-nav__subitem:last-child {
+    border-bottom: 1px solid var(--color-border-default);
+}
+
+.mobile-nav__sublink {
+    display: block;
+    padding: var(--space-3) var(--space-10);
+}
+
+/* 只在平板以下允許開啟。捲動鎖定也限定在這個寬度內——
+   否則選單開著時拉寬視窗，選單被 media query 隱藏，body 卻仍被鎖住滑不動 */
+@media screen and (max-width: 1200px) {
+    .mobile-nav.is-open {
+        display: block;
+    }
+
+    body:has(.mobile-nav.is-open) {
+        overflow: hidden;
+    }
+}

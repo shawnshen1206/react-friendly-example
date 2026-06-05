@@ -1,0 +1,36 @@
+/* =================================================================
+   main.scss：唯一的進入點
+   -----------------------------------------------------------------
+   這支檔案「只負責組裝」，不可以寫任何樣式。
+   scss/ 資料夾只放「非 UI 的基礎建設」（變數、標籤預設、工具）；
+   所有有 UI 身分的樣式都住在元件資料夾，跟它的 html 同住。
+   新增元件時：在元件資料夾建立 _<元件>.scss，
+   然後在下方對應區段按字母順序加一行 @use。
+   ================================================================= */
+
+/* 全域基礎建設（非 UI） */
+@use "tokens";
+@use "base";
+@use "utilities";
+
+/* layouts：整頁模板的骨架樣式（與 _includes/layouts/ 對應） */
+@use "../_includes/layouts/layout";
+
+/* components：大元件——會用到其他元件的組合區塊 */
+@use "../_includes/components/app-footer/app-footer";
+@use "../_includes/components/app-header/app-header";
+@use "../_includes/components/app-header/main-nav";
+@use "../_includes/components/app-header/mobile-nav";
+@use "../_includes/components/sources-table/sources-table";
+
+/* ui：小元件——不依賴其他元件的積木 */
+@use "../_includes/ui/block/block";
+@use "../_includes/ui/breadcrumb/breadcrumb";
+@use "../_includes/ui/button/button";
+@use "../_includes/ui/data-table/data-table";
+@use "../_includes/ui/detail-pager/detail-pager";
+@use "../_includes/ui/form-table/form-table";
+@use "../_includes/ui/link-file/link-file";
+@use "../_includes/ui/modal/modal";
+@use "../_includes/ui/page-title-bar/page-title-bar";
+@use "../_includes/ui/rich-text/rich-text";

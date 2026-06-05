@@ -1,0 +1,30 @@
+{# ===== Component: MainNav（AppHeader 的子元件） =====
+   對應 React：<MainNav items={menuItems} />
+   props：menuItems（由 app-header.html 定義，include 共享）
+   下拉選單用純 CSS :hover / :focus-within，不需要 JS。
+#}
+<nav class="main-nav" aria-label="主選單">
+    <ul class="main-nav__list">
+        {% for item in menuItems %}
+        <li class="main-nav__item">
+            <a href="{{ item.href }}"
+                class="main-nav__link{% if item.children %} main-nav__link--dropdown{% endif %}">
+                {{ item.label }}
+            </a>
+            {% if item.children %}
+            <ul class="main-nav__submenu">
+                {% for child in item.children %}
+                <li class="main-nav__subitem">
+                    <a href="{{ child.href }}" class="main-nav__sublink">{{ child.label }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+        {% endfor %}
+        <li class="main-nav__item main-nav__item--logout">
+            <a href="#" class="main-nav__link">登出</a>
+        </li>
+    </ul>
+</nav>
+{# ===== /MainNav ===== #}

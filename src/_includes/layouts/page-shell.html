@@ -1,0 +1,22 @@
+---
+layout: layouts/base.html
+---
+{# ===== Layout: PageShell =====
+   一般頁面的外殼：頁面 front matter 選了這個 layout，
+   nav、footer、main 容器就自動出現（= Razor 的 master page、
+   Next.js 的 layout.tsx、React Router 的 <Outlet />）。
+   頁面只需要寫中間的內容（注入到下方的 content）。
+
+   不需要 nav/footer 的特殊頁（如登入頁），front matter 直接用
+   layout: layouts/base.html（空白外框）。
+#}
+{% include "components/app-header/app-header.html" %}
+
+<main class="app-main">
+    {# .stack 統一控制區塊間距（元件不自帶外距） #}
+    <div class="wrap stack">
+        {{ content | safe }}
+    </div>
+</main>
+
+{% include "components/app-footer/app-footer.html" %}

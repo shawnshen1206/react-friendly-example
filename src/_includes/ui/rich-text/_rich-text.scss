@@ -1,0 +1,33 @@
+/* ===== Component: RichText =====
+   對應 React：markdown renderer 的容器樣式（純樣式元件）
+   -----------------------------------------------------------------
+   AI 回答、免責聲明這類「整段文章」的內容，在 React 裡會由
+   markdown renderer 或 CMS 動態輸出，工程師無法逐元素加 class。
+   所以這個 class 是唯一允許「用標籤名稱當子選擇器」的地方：
+   設計師只要定義 .rich-text 裡的 h3 / p / ul 長什麼樣子即可。
+*/
+.rich-text {
+    font-size: var(--text-base);
+    color: var(--color-text-default);
+    text-align: left;
+
+    h3 {
+        font-size: var(--text-md);
+        font-weight: 600;
+        margin: var(--space-4) 0 var(--space-2);
+    }
+
+    p {
+        margin: var(--space-2) 0;
+    }
+
+    ul {
+        list-style: disc;
+        padding-left: var(--space-6);
+        margin: var(--space-2) 0;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+}

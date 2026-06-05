@@ -1,0 +1,94 @@
+/* ===== Component: FormTable =====
+   對應 React：<FormTable> / <FormTableField label width>
+   -----------------------------------------------------------------
+   「標籤 + 值」的表單式表格（模擬 table）。純樣式元件：
+   結構簡單且每頁內容不同，直接在使用它的元件裡寫 markup。
+
+   結構範例：
+   <div class="form-table">
+     <section class="form-table__group">
+       <h2 class="form-table__subtitle">群組標題</h2>
+       <div class="form-table__row">
+         <div class="form-table__field form-table__field--half">
+           <div class="form-table__label">欄位名</div>
+           <div class="form-table__value">欄位值</div>
+         </div>
+       </div>
+     </section>
+   </div>
+
+   寬度變體（= React 的 width prop）：
+   --full（100%，預設）、--half（50%）、--third（33%）
+*/
+.form-table {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.form-table__subtitle {
+    padding-bottom: var(--space-2);
+    font-size: var(--text-md);
+    font-weight: 600;
+    text-align: left;
+    color: var(--color-text-default);
+}
+
+.form-table__row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-table__field {
+    display: flex;
+    width: 100%;
+}
+
+.form-table__field--half {
+    width: 50%;
+}
+
+.form-table__field--third {
+    width: 33.3333%;
+}
+
+.form-table__label {
+    display: flex;
+    align-items: center;
+    width: 160px;
+    min-width: 160px;
+    padding: var(--space-2) 0.625rem;
+    font-weight: 500;
+    text-align: left;
+    color: var(--color-text-default);
+    border: 1px solid var(--color-border-default);
+    background-color: var(--color-gray-300);
+}
+
+.form-table__value {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    flex-grow: 1;
+    min-width: 0;
+    padding: 0.5625rem 0.625rem;
+    text-align: left;
+    color: var(--color-text-default);
+    border: 1px solid var(--color-border-default);
+    background-color: var(--color-surface);
+}
+
+.form-table__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+}
+
+/* 手機版全部直排 */
+@media screen and (max-width: 768px) {
+    .form-table__field--half,
+    .form-table__field--third {
+        width: 100%;
+    }
+}

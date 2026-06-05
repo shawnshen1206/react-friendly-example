@@ -1,0 +1,39 @@
+{# ===== Component: AppHeader =====
+   對應 React：<AppHeader />，內含兩個子元件（同資料夾）：
+   - main-nav.html   → <MainNav items={menuItems} />（桌機選單）
+   - mobile-nav.html → <MobileNav items={menuItems} />（手機抽屜選單）
+
+   重點：選單資料 menuItems 只定義一次，兩個子元件共用——
+   改選單只需要改這裡。React 轉換時 menuItems 由 AppHeader
+   當 props 傳給兩個子元件。
+#}
+{% set menuItems = [
+    { label: "資料匯入", href: "./1-1-1_dataImport.html" },
+    { label: "問答紀錄", href: "#" },
+    { label: "資料集列表", href: "./3-1-1_datasetList.html" },
+    { label: "歷史問答紀錄", href: "#" },
+    { label: "設定", href: "#", children: [
+        { label: "帳號資訊", href: "#" },
+        { label: "知識檢索邏輯", href: "#" },
+        { label: "統計模組", href: "#" }
+    ] },
+    { label: "EN", href: "#" }
+] %}
+
+<header class="app-header">
+    {# logo 不用 h1：h1 保留給頁面主標題（每頁只能有一個 h1） #}
+    <div class="app-header__logo">
+        <a href="#" class="app-header__logo-link" title="GufoFAQ logo">GufoFAQ</a>
+    </div>
+
+    {% include "components/app-header/main-nav.html" %}
+
+    {# 漢堡按鈕：點擊切換 #mobile-nav 的 is-open（見 js/main.js 的 data-toggle 說明） #}
+    <button type="button" class="app-header__nav-toggle" data-toggle="#mobile-nav" aria-expanded="false"
+        aria-controls="mobile-nav">
+        <span class="sr-only">開關選單</span>
+    </button>
+</header>
+
+{% include "components/app-header/mobile-nav.html" %}
+{# ===== /AppHeader ===== #}

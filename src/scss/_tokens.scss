@@ -1,0 +1,76 @@
+/* =================================================================
+   Design Tokens（設計變數）
+   -----------------------------------------------------------------
+   全站唯一可以定義「顏色 / 間距 / 字級 / 圓角 / 陰影」數值的地方。
+   元件 SCSS 一律使用 var(--xxx)，禁止直接寫色碼或 px 間距。
+
+   轉換說明：這份檔案會整份帶進 React 專案，元件 CSS 原樣沿用。
+   命名順帶對齊 Tailwind 慣例（--space-4 = p-4 = 1rem），
+   未來若導入 Tailwind 可直接對應，但非必要。
+   ================================================================= */
+:root {
+    /* ---------- 字體 ---------- */
+    --font-sans: NotoSans, "PingFangTC", "Microsoft JhengHei", "微軟正黑體", "Helvetica", sans-serif;
+
+    /* ---------- 語意化顏色（沿用原 _var.scss） ---------- */
+    --color-primary: #168ed1;
+    --color-primary-hover: #037ec3;
+    --color-primary-light: #e7f7ff;
+    --color-primary-dark: #13386f;
+    --color-primary-linear: linear-gradient(to right, #0a62ac, #2ebbcf);
+
+    --color-success: #00b526;
+    --color-success-hover: #019520;
+
+    --color-info: #0d97e5;
+
+    --color-warning: #ffc700;
+    --color-warning-hover: #efbb00;
+
+    --color-danger: #f12929;
+    --color-danger-hover: #d41414;
+
+    --color-gray-100: #f9f9f9;
+    --color-gray-200: #f5f5f5;
+    --color-gray-300: #f1f1f1;
+    --color-gray-400: #e1e1e1;
+    --color-gray-500: #dfdfdf;
+    --color-gray-600: #6c6c6c;
+    --color-black: #222222;
+
+    --color-text-default: var(--color-black);
+    --color-text-muted: var(--color-gray-600);
+    --color-text-inverse: #ffffff;   /* 深色底上的文字 */
+    --color-surface: #ffffff;        /* 元件底色（卡片、儲存格、選單…） */
+    --color-bg-page: #fafafa;
+    --color-border-default: var(--color-gray-400);
+    --color-backdrop: rgba(0, 0, 0, 0.3);            /* modal 遮罩 */
+    --color-backdrop-dark: rgba(46, 46, 46, 0.46);   /* 手機選單遮罩 */
+
+    /* ---------- 尺寸 ---------- */
+    --header-height: 56px;
+
+    /* ---------- 間距（= Tailwind spacing scale） ---------- */
+    --space-1: 0.25rem;  /* 4px  */
+    --space-2: 0.5rem;   /* 8px  */
+    --space-3: 0.75rem;  /* 12px */
+    --space-4: 1rem;     /* 16px */
+    --space-5: 1.25rem;  /* 20px */
+    --space-6: 1.5rem;   /* 24px */
+    --space-8: 2rem;     /* 32px */
+    --space-10: 2.5rem;  /* 40px */
+
+    /* ---------- 字級（= Tailwind font-size） ---------- */
+    --text-sm: 0.875rem;  /* 14px */
+    --text-base: 1rem;    /* 16px */
+    --text-md: 1.125rem;  /* 18px */
+    --text-lg: 1.25rem;   /* 20px */
+    --text-xl: 1.5rem;    /* 24px */
+
+    /* ---------- 圓角 ---------- */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+
+    /* ---------- 陰影 ---------- */
+    --shadow-dropdown: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+}

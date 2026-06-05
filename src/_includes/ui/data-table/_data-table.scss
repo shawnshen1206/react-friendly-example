@@ -1,0 +1,37 @@
+/* ===== Component: DataTable =====
+   對應 React：<DataTable>（全站表格的基底樣式）
+   -----------------------------------------------------------------
+   純樣式元件：灰底表頭、格線、橫向捲動容器。
+   每一頁的表格都從這個基底開始，頁面專屬的表格元件
+   （如 sources-table）在同一個元素上疊自己的 class
+   ——多 class 組合 = React 的 className 組合。
+*/
+
+/* 橫向捲動容器 */
+.data-table__scroll {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gray-500) transparent;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table__th {
+    padding: 0.625rem;
+    text-align: left;
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--color-text-default);
+    background-color: var(--color-gray-200);
+}
+
+.data-table__cell {
+    padding: 0.609375rem 0.625rem;
+    vertical-align: middle;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border-default);
+}

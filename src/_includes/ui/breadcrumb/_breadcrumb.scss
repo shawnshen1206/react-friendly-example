@@ -1,0 +1,28 @@
+/* ===== Component: Breadcrumb =====
+   對應 React：<Breadcrumb items={[...]} />
+*/
+.breadcrumb__list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.breadcrumb__item {
+    color: var(--color-text-muted);
+    word-break: break-all;
+}
+
+.breadcrumb__item + .breadcrumb__item::before {
+    content: "/";
+    padding: 0 var(--space-2);
+    color: var(--color-text-muted);
+}
+
+.breadcrumb__link {
+    color: var(--color-text-muted);
+}
+
+.breadcrumb__link:hover {
+    text-decoration: underline;
+}

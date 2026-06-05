@@ -1,0 +1,15 @@
+/* ===== Component: Block =====
+   對應 React：<Block size="sm">（白底卡片區塊，很多設計系統叫 Card）
+   純樣式元件：只有一個 div、內容每次都不同，直接寫
+   <section class="block"> 即可。
+*/
+.block {
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-sm);
+}
+
+.block--sm {
+    padding: var(--space-4);
+    border-radius: 0;
+}

@@ -1,0 +1,79 @@
+/* ===== Component: Button =====
+   對應 React：<Button variant="primary | outline | green | red" size="sm">
+   -----------------------------------------------------------------
+   這是「純樣式元件」：沒有對應的 .html 檔，因為按鈕只有一行、
+   每次的文字都不同，直接在頁面寫 <button class="button button--green">
+   即可。命名規則：基底 .button + 變體 .button--xxx（= React 的 props）。
+*/
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-1);
+    width: fit-content;
+    padding: 0.5625rem var(--space-4);
+    font-size: var(--text-base);
+    font-weight: 500;
+    line-height: 1.375;
+    color: var(--color-text-default);
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* ---------- 變體（= variant prop） ---------- */
+.button--primary {
+    color: var(--color-text-inverse);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.button--primary:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+.button--outline {
+    color: var(--color-primary);
+    background-color: var(--color-surface);
+    border-color: var(--color-primary);
+}
+
+.button--outline:hover:not(:disabled) {
+    color: var(--color-text-inverse);
+    background-color: var(--color-primary);
+}
+
+.button--green {
+    color: var(--color-text-inverse);
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.button--green:hover:not(:disabled) {
+    background-color: var(--color-success-hover);
+    border-color: var(--color-success-hover);
+}
+
+.button--red {
+    color: var(--color-text-inverse);
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.button--red:hover:not(:disabled) {
+    background-color: var(--color-danger-hover);
+    border-color: var(--color-danger-hover);
+}
+
+/* ---------- 尺寸（= size prop） ---------- */
+.button--sm {
+    padding: 0.4375rem var(--space-2);
+}

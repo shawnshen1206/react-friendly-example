@@ -1,0 +1,54 @@
+{# ===== Component: SourceAccordionRow =====
+   對應 React：<SourceAccordionRow source={...} />
+   props：source（由 sources-table.html 的 for 迴圈傳入）
+
+   結構說明：一筆來源 = 一個 <tbody>，裡面有「主列 + 詳細列」。
+   用 <tbody> 包起來是為了讓「一筆資料」有單一的元件根節點，
+   點擊展開鈕時只要 toggle 這個 <tbody> 的 is-open 即可。
+   is-open = React 的 isExpanded state。
+#}
+<tbody class="source-row">
+    <tr>
+        <td class="data-table__cell">
+            <button type="button" class="source-row__toggle" data-toggle="closest:.source-row" aria-expanded="false">
+                <span class="sr-only">展開詳細內容</span>
+            </button>
+        </td>
+        <td class="data-table__cell">{{ source.no }}</td>
+        <td class="data-table__cell">
+            <a href="#" class="link-file">{{ source.file }}</a>
+        </td>
+        <td class="data-table__cell">{{ source.dataset }}</td>
+    </tr>
+
+    {# 詳細列：預設隱藏，.source-row.is-open 時顯示 #}
+    <tr class="source-row__detail">
+        <td colspan="4" class="source-row__detail-cell">
+            <table class="source-row__detail-table">
+                <tr>
+                    <th>標題</th>
+                    <td>{{ source.title }}</td>
+                    <th>時間</th>
+                    <td>{{ source.time }}</td>
+                </tr>
+                <tr>
+                    <th>內容</th>
+                    <td colspan="3">{{ source.content }}</td>
+                </tr>
+                <tr>
+                    <th>備註1</th>
+                    <td colspan="3">{{ source.note1 }}</td>
+                </tr>
+                <tr>
+                    <th>備註2</th>
+                    <td colspan="3">{{ source.note2 }}</td>
+                </tr>
+                <tr>
+                    <th>參考資料</th>
+                    <td colspan="3">{{ source.reference }}</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</tbody>
+{# ===== /SourceAccordionRow ===== #}

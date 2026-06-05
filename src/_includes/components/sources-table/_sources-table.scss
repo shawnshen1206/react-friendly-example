@@ -1,0 +1,92 @@
+/* ===== Component: SourcesTable（大元件） =====
+   對應 React：<SourcesTable sources>
+   表格基底樣式用小元件 ui/data-table，
+   這裡只放自己特有的：欄寬、標題列、手風琴列（SourceAccordionRow）。
+*/
+.sources-table__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.sources-table__title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+}
+
+.sources-table__note {
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+/* 表格區（內部間距是元件自己的事，外距交給頁面的 .stack） */
+.sources-table__body {
+    margin-top: var(--space-4);
+}
+
+.sources-table__col-toggle { width: 40px; min-width: 40px; }
+.sources-table__col-no { width: 272px; min-width: 272px; }
+.sources-table__col-file { min-width: 580px; }
+.sources-table__col-dataset { width: 240px; min-width: 240px; }
+
+/* ===== 子元件: SourceAccordionRow =====
+   一筆來源 = 一個 <tbody class="source-row">
+   is-open = React 的 isExpanded state
+*/
+
+/* 展開鈕：is-open 時換 icon */
+.source-row__toggle {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background: transparent url(../images/icon_table_arrow_default.png) no-repeat center / contain;
+}
+
+.source-row.is-open .source-row__toggle {
+    background-image: url(../images/icon_table_arrow_open.png);
+}
+
+/* 詳細列：預設隱藏 */
+.source-row__detail {
+    display: none;
+}
+
+.source-row.is-open .source-row__detail {
+    display: table-row;
+}
+
+.source-row__detail-cell {
+    padding: 0;
+    border-bottom: 1px solid var(--color-border-default);
+}
+
+/* 詳細內容的內嵌表格 */
+.source-row__detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.source-row__detail-table th,
+.source-row__detail-table td {
+    padding: 0.46875rem var(--space-4);
+    text-align: left;
+    font-size: var(--text-base);
+    line-height: 1.375;
+    background-color: var(--color-gray-200);
+    border: 1px solid var(--color-border-default);
+}
+
+.source-row__detail-table th {
+    width: 120px;
+    text-align: center;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.source-row__detail-table td {
+    word-break: break-word;
+}

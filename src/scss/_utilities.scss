@@ -1,0 +1,31 @@
+/* =================================================================
+   Utilities：原子工具 class
+   -----------------------------------------------------------------
+   用來取代行內 style（行內 style 禁用！）。
+   命名對齊 Tailwind，工程師轉 React 時可以原字保留：
+   .mt-4 → className="mt-4"（完全相同）
+   有需要新的 utility 請在這裡新增，不要寫行內 style。
+   ================================================================= */
+
+/* 間距 */
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mb-4 { margin-bottom: var(--space-4); }
+
+/* 文字 */
+.text-right { text-align: right; }
+.font-bold { font-weight: 600; }
+.text-muted { color: var(--color-text-muted); }
+
+/* 無障礙：隱藏但保留給螢幕閱讀器 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

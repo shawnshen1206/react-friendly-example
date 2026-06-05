@@ -1,0 +1,34 @@
+{# ===== Component: MobileNav（AppHeader 的子元件） =====
+   對應 React：<MobileNav items={menuItems} isOpen onClose />
+   props：menuItems（由 app-header.html 定義，include 共享）
+   is-open = React 的 isMenuOpen state；
+   開啟時的 body 捲動鎖定見 _mobile-nav.scss。
+#}
+<div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav__backdrop" data-toggle="#mobile-nav"></div>
+    <ul class="mobile-nav__menu">
+        {% for item in menuItems %}
+        <li class="mobile-nav__item">
+            {% if item.children %}
+            <button type="button" class="mobile-nav__link mobile-nav__link--dropdown" data-toggle="closest:li"
+                aria-expanded="false">
+                {{ item.label }}
+            </button>
+            <ul class="mobile-nav__submenu">
+                {% for child in item.children %}
+                <li class="mobile-nav__subitem">
+                    <a href="{{ child.href }}" class="mobile-nav__sublink">{{ child.label }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <a href="{{ item.href }}" class="mobile-nav__link">{{ item.label }}</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+        <li class="mobile-nav__item">
+            <a href="#" class="mobile-nav__link">登出</a>
+        </li>
+    </ul>
+</div>
+{# ===== /MobileNav ===== #}

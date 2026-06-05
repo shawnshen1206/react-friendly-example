@@ -1,0 +1,102 @@
+{# ===== Component: QaDetailInfo（大元件） =====
+   對應 React：<QaDetailInfo conversation={...} />
+   props：conversation —— 來自頁面 front matter，工程師轉換時
+   這個物件就是 API 回傳的對話資料。
+   組合了 Button、FormTable、RichText，本身沒有自己的 SCSS。
+
+   注意：「AI對話內容」在正式系統是 Markdown 動態渲染，
+   所以內容直接寫在元件裡並掛 .rich-text（樣式在 _rich-text.scss）
+   ——設計師要定義的是「渲染出來的長文長什麼樣」，不是資料本身。
+#}
+{# 根節點掛 .qa-detail-info（= 元件名），即使沒有自己的樣式也要掛，
+   讓工程師從 DOM 一眼對應到元件 #}
+<section class="qa-detail-info block block--sm">
+    <div class="text-right mb-4">
+        <button type="button" class="button button--green" data-action="print">列印此頁</button>
+    </div>
+
+    <div class="form-table">
+        <section class="form-table__group">
+            <h2 class="form-table__subtitle">滿意度回饋</h2>
+            <div class="form-table__row">
+                <div class="form-table__field form-table__field--half">
+                    <div class="form-table__label">使用者滿意度</div>
+                    <div class="form-table__value">
+                        <strong>{{ conversation.satisfaction }}</strong>
+                        {# icon 跟著滿意度值走：React 由 satisfaction 決定 good/bad icon #}
+                        <img src="./images/icon_good.png" alt="" class="form-table__icon">
+                    </div>
+                </div>
+                <div class="form-table__field form-table__field--half">
+                    <div class="form-table__label">意見回饋</div>
+                    <div class="form-table__value">{{ conversation.feedback }}</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-table__group">
+            <h2 class="form-table__subtitle">基本對話資訊</h2>
+            <div class="form-table__row">
+                <div class="form-table__field">
+                    <div class="form-table__label">聊天室編號</div>
+                    <div class="form-table__value">{{ conversation.chatroomId }}</div>
+                </div>
+            </div>
+            <div class="form-table__row">
+                <div class="form-table__field form-table__field--third">
+                    <div class="form-table__label">對話編號</div>
+                    <div class="form-table__value">{{ conversation.id }}</div>
+                </div>
+                <div class="form-table__field form-table__field--third">
+                    <div class="form-table__label">對話時間</div>
+                    <div class="form-table__value">{{ conversation.time }}</div>
+                </div>
+                <div class="form-table__field form-table__field--third">
+                    <div class="form-table__label">有無進行意圖判斷</div>
+                    <div class="form-table__value">{{ conversation.intent }}</div>
+                </div>
+                <div class="form-table__field">
+                    <div class="form-table__label">使用者對話內容</div>
+                    <div class="form-table__value">{{ conversation.userMessage }}</div>
+                </div>
+                <div class="form-table__field">
+                    <div class="form-table__label">AI對話內容</div>
+                    <div class="form-table__value">
+                        {# 這一塊在 React 是 markdown renderer 的輸出 #}
+                        <div class="rich-text">
+                            <p>您好！關於新住民結婚的注意事項，以下是一些重要的要點：</p>
+                            <h3>1. 申請結婚登記</h3>
+                            <ul>
+                                <li><strong>雙方當事人</strong>需親自到戶政事務所提出結婚登記申請。</li>
+                                <li>需提供有效的身份證明文件，如國民身分證或護照。</li>
+                            </ul>
+                            <h3>2. 文件準備</h3>
+                            <ul>
+                                <li><strong>結婚證明文件</strong>：需提供與依親對象結婚登記的證明文件。</li>
+                                <li><strong>其他相關證明文件</strong>：如有需要，可能還需提供其他文件以證明雙方的身份及婚姻狀況。</li>
+                            </ul>
+                            <h3>3. 健康檢查</h3>
+                            <ul>
+                                <li>在某些情況下，可能需要提供健康檢查合格證明。</li>
+                            </ul>
+                            <h3>4. 語言溝通</h3>
+                            <ul>
+                                <li>若雙方語言不通，建議尋求通譯人員協助，以確保理解所有法律文件及程序。</li>
+                            </ul>
+                            <h3>5. 法律責任</h3>
+                            <ul>
+                                <li>了解結婚後的法律責任，包括財產、子女撫養等問題。</li>
+                            </ul>
+                            <h3>6. 文化差異</h3>
+                            <ul>
+                                <li>注意文化差異，尊重彼此的習俗和傳統，促進良好的溝通。</li>
+                            </ul>
+                            <p>如需更詳細的資訊或具體的法律條文，建議您參考相關的法律文件或諮詢專業的法律顧問。希望這些資訊對您有所幫助！如有其他問題，隨時歡迎詢問。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+{# ===== /QaDetailInfo ===== #}

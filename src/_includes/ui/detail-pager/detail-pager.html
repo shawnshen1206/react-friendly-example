@@ -1,0 +1,24 @@
+{# ===== Component: DetailPager =====
+   對應 React：<DetailPager current={1} total={12} itemName="對話" />
+   props（include 前用 {% set %} 傳入）：
+   - pagerCurrent：目前第幾筆
+   - pagerTotal：總筆數
+   - pagerItemName：項目名稱（選填，例如 "對話"、"資料"；不填只顯示「個」）
+   注意：上一個 / 下一個的切換「行為」由工程師在 React 實作，
+   這裡只需要呈現 disabled 與一般兩種狀態的「外觀」。
+#}
+{% set pagerItemName = pagerItemName or "" %}
+<div class="detail-pager">
+    <button type="button" class="detail-pager__btn" {% if pagerCurrent <= 1 %}disabled{% endif %}>
+        <img src="./images/icon_arrow_left_blue.png" alt="上一個" class="detail-pager__icon">
+    </button>
+
+    <span class="detail-pager__text">第</span>
+    <input class="detail-pager__input" type="text" value="{{ pagerCurrent }}" aria-label="目前項目編號">
+    <span class="detail-pager__text">個{{ pagerItemName }}，共 {{ pagerTotal }} 個</span>
+
+    <button type="button" class="detail-pager__btn" {% if pagerCurrent >= pagerTotal %}disabled{% endif %}>
+        <img src="./images/icon_arrow_right_blue.png" alt="下一個" class="detail-pager__icon">
+    </button>
+</div>
+{# ===== /DetailPager ===== #}

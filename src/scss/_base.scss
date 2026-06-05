@@ -1,0 +1,55 @@
+/* =================================================================
+   Base：reset 與全域基礎樣式
+   只放「HTML 標籤本身」的預設樣式，禁止放任何元件樣式。
+   ================================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.375;
+    color: var(--color-text-default);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* 註：modal / 手機選單開啟時的 body 捲動鎖定，規則放在各自的
+   元件 scss 裡（誰造成的效果，規則就放誰家），見 _modal.scss、_mobile-nav.scss */
+
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-text-default);
+}
+
+img {
+    max-width: 100%;
+}
+
+button {
+    font-family: inherit;
+}
