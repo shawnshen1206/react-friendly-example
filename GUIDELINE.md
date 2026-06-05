@@ -2,7 +2,8 @@
 
 > 給設計師團隊：照這份規範交付，工程師就能把你們的切版「機械式」轉成 React，
 > 不需要來回確認、不需要重切。
-> 對照範例：本資料夾的 `4-2_qaHistory_detail.html`（原版在 `../4-2_qaHistory_detail.html`）。
+> 對照範例：本資料夾的 `4-2_qaHistory_detail.html` 與 `1-1-4_columnSelect_excel.html`
+>（原版在上層資料夾的同名檔案）。
 
 ---
 
@@ -120,6 +121,22 @@ react-friendly-example/
 ---
 
 ## 5. HTML 規則
+
+### 5-0. Eleventy 你只需要會 4 個語法
+
+整套規範用到的模板語法就只有下面 4 個，**其他語法一律不用、也不准用**
+（macro、filter、shortcode、自訂 data 檔等進階功能都禁止——
+讓任何人打開任何檔案都能看懂）：
+
+| 語法 | 意思 | 對應 React |
+|---|---|---|
+| 檔案開頭兩條 `---` 之間（front matter） | 這一頁的設定與資料：選 layout、標題、輸出檔名、頁面資料 | props / API 資料 |
+| `{% include "資料夾/元件.html" %}` | 把元件放進來 | `<Component />` |
+| `{% set 名字 = 值 %}` | 在 include 前傳參數給元件 | props |
+| `{% for 項目 in 清單 %}…{% endfor %}` | 清單裡每一筆都渲染一次（搭配 `{% if %}` 做條件顯示） | `.map()` |
+
+唯一的例外是 `layouts/` 裡的固定寫法（`{{ content | safe }}`），
+那是模板的水電管線，已經寫好、有註解，不需要動也不需要懂。
 
 ### 5-1. 頁面 = 選一個 layout + 中間內容的組合
 

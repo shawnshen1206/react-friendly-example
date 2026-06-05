@@ -7,6 +7,7 @@
    注意：上一個 / 下一個的切換「行為」由工程師在 React 實作，
    這裡只需要呈現 disabled 與一般兩種狀態的「外觀」。
 #}
+{# 「A or B」= 沒傳 A 就用 B 當預設值 #}
 {% set pagerItemName = pagerItemName or "" %}
 <div class="detail-pager">
     <button type="button" class="detail-pager__btn" {% if pagerCurrent <= 1 %}disabled{% endif %}>
