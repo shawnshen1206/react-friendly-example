@@ -1,0 +1,47 @@
+/* ===== Component: TagSelect =====
+   對應 React：react-select 等多選套件（純樣式元件）
+   -----------------------------------------------------------------
+   這是多選下拉框的「靜態外觀 mockup」——原版用 select2（jQuery），
+   依規範（§7）這類複雜互動元件的行為由工程師用 React 套件實作，
+   設計師只交付外觀：外框、已選 tag、placeholder 三種視覺。
+
+   結構範例：
+   <div class="tag-select">
+     <span class="tag-select__tag">標題一<span class="tag-select__remove">×</span></span>
+     <span class="tag-select__placeholder">請選擇</span>  ← 沒有選項時
+   </div>
+*/
+.tag-select {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    width: 100%;
+    min-height: 56px;
+    padding: var(--space-2);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface);
+    cursor: pointer;
+}
+
+.tag-select__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-default);
+    background-color: var(--color-gray-200);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-sm);
+}
+
+.tag-select__remove {
+    color: var(--color-text-muted);
+}
+
+.tag-select__placeholder {
+    padding: 0 var(--space-1);
+    color: var(--color-text-muted);
+}

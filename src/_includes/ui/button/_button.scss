@@ -28,6 +28,12 @@
     opacity: 0.5;
 }
 
+.button__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+}
+
 /* ---------- 變體（= variant prop） ---------- */
 .button--primary {
     color: var(--color-text-inverse);

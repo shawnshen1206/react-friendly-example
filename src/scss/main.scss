@@ -21,7 +21,9 @@
 @use "../_includes/components/app-header/app-header";
 @use "../_includes/components/app-header/main-nav";
 @use "../_includes/components/app-header/mobile-nav";
+@use "../_includes/components/column-mapping/column-mapping";
 @use "../_includes/components/sources-table/sources-table";
+@use "../_includes/components/step-nav/step-nav";
 
 /* ui：小元件——不依賴其他元件的積木 */
 @use "../_includes/ui/block/block";
@@ -29,8 +31,11 @@
 @use "../_includes/ui/button/button";
 @use "../_includes/ui/data-table/data-table";
 @use "../_includes/ui/detail-pager/detail-pager";
+@use "../_includes/ui/form-field/form-field";
 @use "../_includes/ui/form-table/form-table";
 @use "../_includes/ui/link-file/link-file";
 @use "../_includes/ui/modal/modal";
 @use "../_includes/ui/page-title-bar/page-title-bar";
 @use "../_includes/ui/rich-text/rich-text";
+@use "../_includes/ui/tag-select/tag-select";
+@use "../_includes/ui/text-input/text-input";

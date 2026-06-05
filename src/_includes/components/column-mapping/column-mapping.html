@@ -1,0 +1,65 @@
+{# ===== Component: ColumnMapping（大元件） =====
+   對應 React：<ColumnMapping fields={[...]} />
+   props：fields（頁面 front matter）——左卡「欄位對應」與右卡「預覽」
+   共用同一份資料，各自渲染一次（= 同一份資料兩個 .map()）。
+
+   左卡的多選框是「靜態外觀 mockup」（原版用 select2）：
+   依規範 §7，複雜互動元件由工程師用 React 套件實作（如 react-select），
+   設計師只提供外觀，見 ui/tag-select。
+   右卡示範 is-error 錯誤狀態（「時間」欄位）。
+#}
+<div class="column-mapping">
+
+    <section class="column-mapping__card block block--lg">
+        <header class="column-mapping__header">
+            <h2 class="column-mapping__title">欄位對應</h2>
+            <p class="column-mapping__subtitle">請選擇欲對應的來源內容</p>
+        </header>
+
+        <div class="column-mapping__fields">
+            {# @repeat: 對應欄位 #}
+            {% for field in fields %}
+            <div class="form-field">
+                <label class="form-field__label">{{ field.label }}</label>
+                <div class="form-field__control">
+                    <div class="tag-select" title="{{ field.placeholder }}">
+                        {% for tag in field.selected %}
+                        <span class="tag-select__tag">{{ tag }}<span class="tag-select__remove"
+                                aria-hidden="true">×</span></span>
+                        {% endfor %}
+                        {# 一個都沒選的時候，顯示 placeholder #}
+                        {% if field.selected.length == 0 %}
+                        <span class="tag-select__placeholder">{{ field.placeholder }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="column-mapping__card block block--lg">
+        <header class="column-mapping__header">
+            <h2 class="column-mapping__title">預覽</h2>
+            <p class="column-mapping__subtitle">預覽已對應之結果</p>
+        </header>
+
+        <div class="column-mapping__fields">
+            {# @repeat: 預覽欄位（同一份 fields） #}
+            {% for field in fields %}
+            <div class="form-field{% if field.error %} is-error{% endif %}">
+                <label class="form-field__label">{{ field.label }}</label>
+                <div class="form-field__control">
+                    <input type="text" class="text-input{% if field.error %} is-error{% endif %}"
+                        value="{{ field.preview }}" disabled>
+                    {% if field.error %}
+                    <span class="form-field__error">{{ field.error }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+{# ===== /ColumnMapping ===== #}
