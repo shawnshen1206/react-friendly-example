@@ -1,22 +1,20 @@
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+@use "mixin" as *;
 
 html {
+    @include scrollbar();
     width: 100%;
 }
 
 body {
-    margin: 0;
+    font-family: var(--fontFamily);
+    font-size: 1rem;
     width: 100%;
-    font-family: var(--font-sans);
-    font-size: var(--text-base);
     line-height: 1.375;
     color: var(--color-text-default);
+    box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: auto;
+    margin: 0;
 }
 
 ul,
@@ -26,23 +24,7 @@ ol {
     padding: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-p {
-    margin: 0;
-}
-
 a {
     text-decoration: none;
     color: var(--color-text-default);
-}
-
-img {
-    max-width: 100%;
-}
-
-button {
-    font-family: inherit;
 }

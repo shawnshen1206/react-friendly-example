@@ -1,0 +1,47 @@
+<div class="flex-row gap-40 mobile-column multi-select-box">
+    <div class="block block-lg corner-md">
+        <div class="flex-row column gap-24 justify-content-center">
+            <div class="flex-row column gap-8">
+                <div class="text-lg text-bold text-center">欄位對應</div>
+                <div class="text-gray text-center">請選擇欲對應的來源內容</div>
+            </div>
+            <div class="flex-row column gap-16">
+                {% for field in fields %}
+                <div class="form-group row mobile-col">
+                    <div class="label label-md">
+                        <label class="control-label">{{ field.label }}</label>
+                    </div>
+                    <div class="field col-12-sm">
+                        <select class="form-control multiSelect" multiple="multiple" data-placeholder="{{ field.placeholder }}">
+                            {% for option in field.options %}
+                            <option value="{{ option.text }}"{% if option.selected %} selected{% endif %}>{{ option.text }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="block block-lg corner-md">
+        <div class="flex-row column gap-24 justify-content-center">
+            <div class="flex-row column gap-8">
+                <div class="text-lg text-bold text-center">預覽</div>
+                <div class="text-gray text-center">預覽已對應之結果</div>
+            </div>
+            <div class="flex-row column gap-16">
+                {% for field in fields %}
+                <div class="form-group row mobile-col">
+                    <div class="label label-md">
+                        <label class="control-label">{{ field.label }}</label>
+                    </div>
+                    <div class="field col-12-sm">
+                        <input type="text" placeholder="" class="form-control disabled{% if field.error %} error{% endif %}" value="{{ field.preview }}" disabled>
+                        <span class="error-prompt">{{ field.error }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

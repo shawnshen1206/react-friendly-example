@@ -6,11 +6,11 @@
 
 整頁式切版（HTML + jQuery + 單一大 SCSS）轉成 React 需要大量人工：重複的區塊要逐頁比對、jQuery 套件要整段重寫、CSS 難以拆分。
 
-這個範本在切版階段就完成元件切分：
+這個範本沿用原本的 class 命名與設計，只改三件事：
 
-- 一個元件一個資料夾（HTML 與 SCSS 同住），頁面是元件的組合
-- 互動用瀏覽器原生功能（popover、`<details>`），整個專案沒有 JS、沒有 jQuery
-- 轉換成 React 時，HTML→JSX 是機械式替換，CSS 原樣沿用
+- 一個元件一個資料夾（HTML、SCSS、JS 同住），頁面是元件的組合
+- jQuery 換成各元件自己的 vanilla JS（標準 DOM API）
+- 轉換成 React 時，HTML→JSX 是機械式替換，CSS 原樣沿用，JS 是現成的行為規格
 
 ## 怎麼執行
 
@@ -31,10 +31,12 @@ npm run build    # 輸出純靜態 HTML 到 dist/（交付物，雙擊即開）
 
 ```
 src/_includes/
-├── layouts/       整頁模板（page-shell = 一般頁外殼，選它 nav/footer 自動出現）
+├── layouts/       整頁模板（page-shell = 一般頁外殼，選它 header/footer 自動出現）
 ├── components/    大元件：會用到其他元件的組合區塊
 └── ui/            小元件：不依賴其他元件的積木
 ```
+
+每個元件資料夾內：`元件.html`（結構）、`_元件.scss`（樣式）、`元件.js`（行為），有才放。
 
 範例頁（原版對照在上層資料夾的同名檔案）：
 

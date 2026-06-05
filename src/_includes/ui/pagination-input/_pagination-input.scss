@@ -1,0 +1,40 @@
+.pagination-input {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    align-self: flex-end;
+}
+
+.pager-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+
+    img {
+        display: block;
+    }
+}
+
+.pager-input {
+    width: 60px;
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    line-height: 1.375;
+    color: var(--color-text-default);
+    border-radius: 4px;
+    border: solid 1px var(--color-border-default);
+    background-color: #fff;
+}

@@ -1,9 +1,9 @@
 .link-file {
     color: var(--color-primary);
     word-break: break-all;
-}
 
-.link-file:hover {
-    text-decoration: underline;
-    color: var(--color-primary-hover);
+    &:hover {
+        text-decoration: underline;
+        color: var(--color-primary-hover);
+    }
 }

@@ -1,71 +1,80 @@
-.form-table {
+@use "../../../scss/mixin" as *;
+
+.form-table-wrap {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: 16px;
+
+    .form-table-group {
+        .subtitle {
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-align: left;
+            color: var(--color-text-default);
+            padding-bottom: 0.5rem;
+            box-sizing: border-box;
+        }
+
+        &+.form-table-group {
+            .subtitle {
+                padding: 0.5rem 0;
+                margin-bottom: 0.625rem;
+            }
+        }
+    }
 }
 
-.form-table__subtitle {
-    padding-bottom: var(--space-2);
-    font-size: var(--text-md);
-    font-weight: 600;
-    text-align: left;
-    color: var(--color-text-default);
-}
-
-.form-table__row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.form-table__field {
-    display: flex;
+.form-table {
     width: 100%;
-}
+    min-width: auto;
 
-.form-table__field--half {
-    width: 50%;
-}
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
 
-.form-table__field--third {
-    width: 33.3333%;
-}
+        .col {
+            display: flex;
+        }
 
-.form-table__label {
-    display: flex;
-    align-items: center;
-    width: 160px;
-    min-width: 160px;
-    padding: var(--space-2) 0.625rem;
-    font-weight: 500;
-    text-align: left;
-    color: var(--color-text-default);
-    border: 1px solid var(--color-border-default);
-    background-color: var(--color-gray-300);
-}
+        .th {
+            padding: 0.5rem 0.625rem;
+            box-sizing: border-box;
+            width: 160px;
+            min-width: 160px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: left;
+            color: var(--color-text-default);
+            border: 1px solid var(--color-border-default);
+            background-color: var(--color-gray-300);
+            display: flex;
+            align-items: center;
+        }
 
-.form-table__value {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--space-1);
-    flex-grow: 1;
-    min-width: 0;
-    padding: 0.5625rem 0.625rem;
-    text-align: left;
-    color: var(--color-text-default);
-    border: 1px solid var(--color-border-default);
-    background-color: var(--color-surface);
-}
+        .td {
+            padding: 0.5625rem 0.625rem;
+            box-sizing: border-box;
+            font-size: 1rem;
+            text-align: left;
+            color: var(--color-text-default);
+            flex-grow: 1;
+            min-width: 0;
+            border: 1px solid var(--color-border-default);
 
-.form-table__icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    object-fit: contain;
-}
+            &:has(.icon) {
+                display: flex;
+                align-items: center;
+                gap: 2px;
+                padding: 0.5rem 0.625rem;
+            }
 
-@media screen and (max-width: 768px) {
-    .form-table__field--half,
-    .form-table__field--third {
-        width: 100%;
+            .long-text {
+                max-height: 600px;
+                overflow-y: auto;
+                white-space: pre-wrap;
+                @include scrollbar_thin();
+            }
+        }
     }
 }

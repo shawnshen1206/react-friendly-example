@@ -1,0 +1,24 @@
+<div class="mobile-nav">
+    <div class="overlay"></div>
+    <div class="mobile-menu-wrap">
+        <ul class="mobile-menu">
+            {% for item in menuItems %}
+            <li>
+                <a href="{{ item.href }}"{% if item.children %} class="dropdown"{% endif %} title="{{ item.label }}">{{ item.label }}</a>
+                {% if item.children %}
+                <ul>
+                    {% for child in item.children %}
+                    <li>
+                        <a href="{{ child.href }}" title="{{ child.label }}">{{ child.label }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+            <li>
+                <a href="#" class="logout" title="登出">登出</a>
+            </li>
+        </ul>
+    </div>
+</div>

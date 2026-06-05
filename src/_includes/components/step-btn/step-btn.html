@@ -1,0 +1,13 @@
+<div class="step-btn-wrap">
+    <a href="{{ stepPrevHref }}" class="button button-primary">
+        <img src="./images/icon_back.png" alt="" class="icon">上一步
+    </a>
+    <div class="step-nodes">
+        {% for step in steps %}
+        <div class="step-node{% if step.done %} done{% endif %}">{{ step.label }}</div>
+        {% endfor %}
+    </div>
+    <a href="{{ stepNextHref }}" class="button button-primary align-self-end">
+        下一步<img src="./images/icon_next.png" alt="" class="icon">
+    </a>
+</div>

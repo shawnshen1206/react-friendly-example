@@ -1,0 +1,32 @@
+<div class="block sources-block">
+    <div class="flex-row justify-content-between align-items-center flex-wrap gap-8">
+        <div>
+            <span class="text-lg text-bold">參考來源</span>
+            <span class="text-bold text-gray">(挑選規則 16取8；使用模型：GPT 4o)</span>
+        </div>
+    </div>
+
+    <div class="table-container scrollTable" style="margin-top: 16px;">
+        <table class="default-table no-border">
+            <colgroup>
+                <col style="width:40px; min-width:40px;">
+                <col style="width:272px; min-width:272px;">
+                <col style="width: 1fr; min-width: 580px;">
+                <col style="width:240px; min-width:240px;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>序號</th>
+                    <th>檔案</th>
+                    <th>資料集</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for source in sources %}
+                {% include "components/sources-block/source-row.html" %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

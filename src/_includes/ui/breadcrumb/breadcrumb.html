@@ -1,13 +1,15 @@
-<nav class="breadcrumb" aria-label="麵包屑導覽">
-    <ul class="breadcrumb__list">
-        {% for item in breadcrumbItems %}
-        <li class="breadcrumb__item"{% if not item.href %} aria-current="page"{% endif %}>
-            {% if item.href %}
-            <a href="{{ item.href }}" class="breadcrumb__link">{{ item.label }}</a>
-            {% else %}
-            {{ item.label }}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
-</nav>
+<div class="breadcrumb">
+    <div class="wrap">
+        <ul>
+            {% for item in breadcrumbItems %}
+            <li>
+                {% if item.href %}
+                <a href="{{ item.href }}" title="{{ item.label }}">{{ item.label }}</a>
+                {% else %}
+                {{ item.label }}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

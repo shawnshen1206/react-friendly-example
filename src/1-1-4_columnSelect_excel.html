@@ -14,47 +14,84 @@ steps:
 
 fields:
   - label: 標題
-    placeholder: 建議選擇「標題」屬性欄位
-    selected: [標題一]
+    placeholder: 建議選擇”標題”屬性欄位
+    options:
+      - { text: 標題一, selected: true }
+      - { text: 標題二 }
+      - { text: 標題三 }
+      - { text: 標題四 }
+      - { text: 標題五 }
     preview: 標題一
   - label: 時間
-    placeholder: YYYY/MM/DD HH:mm:ss
-    selected: [日期]
+    placeholder: YYYY/MM/DD HH:mm:ss || YYYY-MM-DD HH:mm:ss
+    options:
+      - { text: 日期, selected: true }
+      - { text: 選項二 }
+      - { text: 選項三 }
+      - { text: 選項四 }
+      - { text: 選項五 }
     preview: 2023/02/11 13:40
     error: 此格式可能無法被正確讀取
   - label: 內容
-    placeholder: 建議選擇「內容」屬性欄位
-    selected: [選項三, 選項四, 選項五]
+    placeholder: 建議選擇”內容”屬性欄位
+    options:
+      - { text: 選項一 }
+      - { text: 選項二 }
+      - { text: 選項三, selected: true }
+      - { text: 選項四, selected: true }
+      - { text: 選項五, selected: true }
     preview: 選項三 選項四 選項五
   - label: 圖片網址
-    placeholder: 建議選擇「圖片網址」屬性欄位
-    selected: []
+    placeholder: 建議選擇”圖片網址”屬性欄位
+    options:
+      - { text: 選項一 }
+      - { text: 選項二 }
+      - { text: 選項三 }
+      - { text: 選項四 }
+      - { text: 選項五 }
     preview: ""
   - label: 備註1
-    placeholder: 建議選擇「備註」屬性欄位
-    selected: []
+    placeholder: 建議選擇”備註”屬性欄位
+    options:
+      - { text: 選項一 }
+      - { text: 選項二 }
+      - { text: 選項三 }
+      - { text: 選項四 }
+      - { text: 選項五 }
     preview: ""
   - label: 備註2
-    placeholder: 建議選擇「備註」屬性欄位
-    selected: []
+    placeholder: 建議選擇”備註”屬性欄位
+    options:
+      - { text: 選項一 }
+      - { text: 選項二 }
+      - { text: 選項三 }
+      - { text: 選項四 }
+      - { text: 選項五 }
     preview: ""
   - label: 參考資料
-    placeholder: 建議選擇「備註」屬性欄位
-    selected: []
+    placeholder: 建議選擇”備註”屬性欄位
+    options:
+      - { text: 選項一 }
+      - { text: 選項二 }
+      - { text: 選項三 }
+      - { text: 選項四 }
+      - { text: 選項五 }
     preview: ""
 ---
-{% set breadcrumbItems = [
-    { label: "首頁", href: "#" },
-    { label: "資料匯入" }
-] %}
-{% include "ui/breadcrumb/breadcrumb.html" %}
+<div class="flex-row column gap-16">
+    {% set breadcrumbItems = [
+        { label: "首頁", href: "#" },
+        { label: "資料匯入" }
+    ] %}
+    {% include "ui/breadcrumb/breadcrumb.html" %}
 
-<div class="page-title-bar">
-    <h1 class="page-title-bar__title">資料匯入</h1>
+    <div class="page-title">資料匯入</div>
 </div>
 
-{% set stepPrevHref = "#" %}
-{% set stepNextHref = "#" %}
-{% include "components/step-nav/step-nav.html" %}
+<div class="step-btn-block" style="margin-bottom: 24px; margin-top: 10px;">
+    {% set stepPrevHref = "#" %}
+    {% set stepNextHref = "#" %}
+    {% include "components/step-btn/step-btn.html" %}
+</div>
 
-{% include "components/column-mapping/column-mapping.html" %}
+{% include "components/multi-select-box/multi-select-box.html" %}

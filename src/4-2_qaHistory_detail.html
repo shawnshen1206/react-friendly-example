@@ -41,22 +41,27 @@ sources:
     note2: 備註文字備註文字
     reference: 來源名稱
 ---
-{% set breadcrumbItems = [
-    { label: "首頁", href: "#" },
-    { label: "歷史問答紀錄", href: "#" },
-    { label: "檢視對話詳細內容" }
-] %}
-{% include "ui/breadcrumb/breadcrumb.html" %}
+<div class="flex-row column gap-16">
+    {% set breadcrumbItems = [
+        { label: "首頁", href: "#" },
+        { label: "歷史問答紀錄", href: "#" },
+        { label: "檢視對話詳細內容" }
+    ] %}
+    {% include "ui/breadcrumb/breadcrumb.html" %}
 
-<div class="page-title-bar">
-    <h1 class="page-title-bar__title">檢視對話詳細內容</h1>
+    <div class="page-title-wrap">
+        <div class="page-title">檢視對話詳細內容</div>
 
-    {% set pagerCurrent = 1 %}
-    {% set pagerTotal = 12 %}
-    {% set pagerItemName = "對話" %}
-    {% include "ui/detail-pager/detail-pager.html" %}
+        {% set pagerCurrent = 1 %}
+        {% set pagerTotal = 12 %}
+        {% include "ui/pagination-input/pagination-input.html" %}
+    </div>
 </div>
 
-{% include "components/qa-detail-info/qa-detail-info.html" %}
+<div style="margin-top: 16px;">
+    {% include "components/qa-detail-info/qa-detail-info.html" %}
+</div>
 
-{% include "components/sources-table/sources-table.html" %}
+<div style="margin-top: 24px;">
+    {% include "components/sources-block/sources-block.html" %}
+</div>

@@ -1,0 +1,42 @@
+{% set menuItems = [
+    { label: "資料匯入", href: "./1-1-4_columnSelect_excel.html" },
+    { label: "問答紀錄", href: "#" },
+    { label: "資料集列表", href: "#" },
+    { label: "歷史問答紀錄", href: "./4-2_qaHistory_detail.html" },
+    { label: "設定", href: "#", children: [
+        { label: "帳號資訊", href: "#" },
+        { label: "知識檢索邏輯", href: "#" },
+        { label: "統計模組", href: "#" }
+    ] },
+    { label: "EN", href: "#" }
+] %}
+
+<header class="header">
+    <h1 class="logo">
+        <a href="#" title="GufoFAQ logo">GufoFAQ</a>
+    </h1>
+    <nav class="desktop-nav">
+        <ul class="main-menu">
+            {% for item in menuItems %}
+            <li>
+                <a href="{{ item.href }}"{% if item.children %} class="dropdown"{% endif %} title="{{ item.label }}">{{ item.label }}</a>
+                {% if item.children %}
+                <ul>
+                    {% for child in item.children %}
+                    <li>
+                        <a href="{{ child.href }}" title="{{ child.label }}">{{ child.label }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+            <li>
+                <a href="#" class="logout" title="登出">登出</a>
+            </li>
+        </ul>
+    </nav>
+    <button type="button" class="nav-toggle"><span class="sr-only">開關選單</span></button>
+</header>
+
+{% include "components/mobile-nav/mobile-nav.html" %}
