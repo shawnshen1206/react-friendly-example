@@ -1,8 +1,3 @@
-/* ===== Component: TextInput =====
-   對應 React：<TextInput value disabled error>（純樣式元件）
-   直接寫 <input type="text" class="text-input">。
-   is-error = React 的 error state（紅框）。
-*/
 .text-input {
     width: 100%;
     padding: 0.625rem var(--space-2);

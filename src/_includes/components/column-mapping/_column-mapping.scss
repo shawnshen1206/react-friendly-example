@@ -1,8 +1,3 @@
-/* ===== Component: ColumnMapping（大元件） =====
-   對應 React：<ColumnMapping fields />
-   用到 ui/block、ui/form-field、ui/tag-select、ui/text-input。
-   這裡只放雙卡片版面與卡片標題，欄位列的樣式在 ui/form-field。
-*/
 .column-mapping {
     display: flex;
     gap: var(--space-10);

@@ -1,13 +1,3 @@
-{# ===== Component: SourcesTable（大元件） =====
-   對應 React：<SourcesTable sources={[...]} />
-   資料來源：頁面 front matter 的 sources 陣列。
-   表格基底樣式來自小元件 ui/data-table（多 class 組合
-   = React 的 className 組合），本元件只疊自己特有的樣式。
-
-   @repeat：下面的 for 迴圈 = React 的
-   {sources.map(source => <SourceAccordionRow source={source} />)}
-   實際資料有 16 筆，範例資料只需要放 2~3 筆示意即可。
-#}
 <section class="block sources-table">
     <header class="sources-table__header">
         <h2 class="sources-table__title">參考來源</h2>
@@ -38,4 +28,3 @@
         </table>
     </div>
 </section>
-{# ===== /SourcesTable ===== #}

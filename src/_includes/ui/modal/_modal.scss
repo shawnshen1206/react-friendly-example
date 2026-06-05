@@ -1,12 +1,3 @@
-/* ===== Component: Modal =====
-   對應 React：<Modal size="sm | md | lg" isOpen onClose>
-   -----------------------------------------------------------------
-   通用彈窗「外殼」，純樣式元件。內容（= React 的 children）
-   由各個具體彈窗元件提供，例如 disclaimer-modal。
-
-   is-open = React 的 isOpen state。
-   開啟方式：任何元素加 data-toggle="#彈窗id"（見 js/main.js）。
-*/
 .modal {
     display: none;
     position: fixed;
@@ -19,7 +10,6 @@
     display: block;
 }
 
-/* modal 開啟時鎖定 body 捲動（取代原本的 jQuery lockBodyScroll） */
 body:has(.modal.is-open) {
     overflow: hidden;
 }
@@ -38,7 +28,6 @@ body:has(.modal.is-open) {
     animation: modal-fade-in-down 0.3s ease-out;
 }
 
-/* 尺寸變體（= size prop） */
 .modal__dialog--sm { max-width: 560px; }
 .modal__dialog--md { max-width: 900px; }
 .modal__dialog--lg { max-width: 1200px; }
@@ -84,7 +73,6 @@ body:has(.modal.is-open) {
     color: var(--color-text-default);
 }
 
-/* 內容可捲動區（高度上限） */
 .modal__scroll-area {
     max-height: 476px;
     overflow-y: auto;

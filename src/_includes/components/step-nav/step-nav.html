@@ -1,10 +1,3 @@
-{# ===== Component: StepNav（大元件） =====
-   對應 React：<StepNav steps={[...]} prevHref nextHref />
-   props：
-   - steps：頁面 front matter 的步驟陣列（label + done）
-   - stepPrevHref / stepNextHref：上一步、下一步的連結（{% set %} 傳入）
-   is-done = 已完成的步驟（React 由 currentStep 計算）。
-#}
 <nav class="step-nav" aria-label="步驟導覽">
     <a href="{{ stepPrevHref }}" class="button button--primary">
         <img src="./images/icon_back.png" alt="" class="button__icon">上一步
@@ -21,4 +14,3 @@
         下一步<img src="./images/icon_next.png" alt="" class="button__icon">
     </a>
 </nav>
-{# ===== /StepNav ===== #}

@@ -107,7 +107,9 @@ react-friendly-example/
 3. **會開／關、顯示／隱藏的區塊** → 切。（modal、手風琴、下拉選單——在 React 會綁定狀態）
 4. **一次性的版面排列** → 不切。直接寫在頁面檔，用註解標記區塊名稱即可：
    ```html
-   {# ===== Section: PageTitleBar（一次性版面，不抽元件） ===== #}
+   {# ===== Section: PageTitleBar ===== #}
+   ...
+   {# ===== /Section ===== #}
    ```
 
 範例頁 4-2 的切分結果：
@@ -135,8 +137,10 @@ react-friendly-example/
 | `{% set 名字 = 值 %}` | 在 include 前傳參數給元件 | props |
 | `{% for 項目 in 清單 %}…{% endfor %}` | 清單裡每一筆都渲染一次（搭配 `{% if %}` 做條件顯示） | `.map()` |
 
-唯一的例外是 `layouts/` 裡的固定寫法（`{{ content | safe }}`），
-那是模板的水電管線，已經寫好、有註解，不需要動也不需要懂。
+唯一的例外是 `layouts/` 裡的固定寫法（`{{ content | safe }}` = 頁面內容插進來的位置），
+那是模板的水電管線，已經寫好，不需要動也不需要懂。
+
+每個元件需要哪些參數，見第 11 節「元件使用一覽」。
 
 ### 5-1. 頁面 = 選一個 layout + 中間內容的組合
 
@@ -368,3 +372,28 @@ title: GufoFAQ::對話詳細內容
 
 HTML → JSX 是機械式替換（`class`→`className`、自閉合標籤、`{# #}`→`{/* */}`），
 CSS 不需要任何翻譯——設計師交付的樣式就是正式環境的最終樣式。
+
+---
+
+## 11. 元件使用一覽
+
+### 需要傳參數的元件
+
+| 元件 | 怎麼用 |
+|---|---|
+| `ui/breadcrumb` | include 前 `{% set breadcrumbItems = [{ label, href }] %}`；最後一項不給 `href` = 目前頁 |
+| `ui/detail-pager` | include 前 set `pagerCurrent`、`pagerTotal`、`pagerItemName`（選填，如 `"對話"`） |
+| `components/step-nav` | 步驟資料寫在 front matter `steps:`（`label` + `done`）；include 前 set `stepPrevHref`、`stepNextHref` |
+| `components/column-mapping` | front matter `fields:`（`label`、`placeholder`、`selected` 陣列、`preview`、`error` 選填） |
+| `components/sources-table` | front matter `sources:`（`no`、`file`、`dataset`、`title`、`time`、`content`、`note1`、`note2`、`reference`） |
+| `components/qa-detail-info` | front matter `conversation:`（`chatroomId`、`id`、`time`、`intent`、`userMessage`、`satisfaction`、`feedback`） |
+
+### 不用管的元件
+
+`app-header`、`app-footer`（含免責聲明彈窗）由 `page-shell` layout 自動引入。
+
+### 純樣式元件（直接寫 class，不用 include）
+
+`button`、`block`、`modal`、`data-table`、`form-table`、`form-field`、`tag-select`、
+`text-input`、`link-file`、`page-title-bar`、`rich-text`——結構照抄兩個範例頁即可。
+狀態變化一律用 `is-*` class（如 `text-input is-error`）。

@@ -1,7 +1,3 @@
-/* ===== Component: AppHeader =====
-   對應 React：<AppHeader />
-   子元件樣式見同資料夾的 _main-nav.scss、_mobile-nav.scss。
-*/
 .app-header {
     position: sticky;
     top: 0;
@@ -32,7 +28,6 @@
     white-space: nowrap;
 }
 
-/* 漢堡按鈕（桌機隱藏） */
 .app-header__nav-toggle {
     display: none;
     width: 32px;
@@ -43,7 +38,6 @@
     cursor: pointer;
 }
 
-/* 開啟狀態換 icon：aria-expanded 由 main.js 自動同步 */
 .app-header__nav-toggle[aria-expanded="true"] {
     background-image: url(../images/menubar_close.png);
 }

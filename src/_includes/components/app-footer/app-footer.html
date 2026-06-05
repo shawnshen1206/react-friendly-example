@@ -1,12 +1,6 @@
-{# ===== Component: AppFooter =====
-   對應 React：<AppFooter />（內部 render <DisclaimerModal> 並持有它的開關 state）
-   免責聲明彈窗由 footer「擁有」——按鈕和彈窗永遠一起出現，
-   頁面只要 include footer，不需要另外記得 include 彈窗。
-#}
 <footer class="app-footer">
     <button type="button" class="app-footer__link" data-toggle="#disclaimer-modal">免責聲明</button>
     <span>&thinsp;| 版權所有© 2025 All Rights Reserved</span>
 </footer>
 
 {% include "components/disclaimer-modal/disclaimer-modal.html" %}
-{# ===== /AppFooter ===== #}

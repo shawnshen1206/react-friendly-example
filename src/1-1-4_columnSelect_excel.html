@@ -1,14 +1,8 @@
 ---
-# 選了 page-shell，nav / footer / main 容器自動出現（見 layouts/page-shell.html）
 layout: layouts/page-shell.html
 title: GufoFAQ::資料匯入
-# 輸出到 dist/ 的檔名（照抄這行，把檔名換成自己的）
 permalink: 1-1-4_columnSelect_excel.html
 
-# ===== 頁面資料區 =====
-# 「內容」寫成資料、「版型」寫在元件裡。工程師轉換時這些就是 props / API 欄位。
-
-# 匯入流程步驟（= <StepNav steps={...} /> 的 props）
 steps:
   - label: 上傳檔案
     done: true
@@ -18,8 +12,6 @@ steps:
     done: true
   - label: 送出資料
 
-# 欄位對應資料（= <ColumnMapping fields={...} />）。
-# 左卡用 selected/placeholder，右卡用 preview/error——同一份資料渲染兩次。
 fields:
   - label: 標題
     placeholder: 建議選擇「標題」屬性欄位
@@ -51,23 +43,17 @@ fields:
     selected: []
     preview: ""
 ---
-{# =================================================================
-   頁面：1-1-4 資料匯入－欄位對應（Excel）
-   -----------------------------------------------------------------
-   nav / footer 由 page-shell layout 自動提供，這裡只寫中間內容。
-   ================================================================= #}
-
 {% set breadcrumbItems = [
     { label: "首頁", href: "#" },
     { label: "資料匯入" }
 ] %}
 {% include "ui/breadcrumb/breadcrumb.html" %}
 
-{# ===== Section: PageTitleBar（本頁沒有右側工具，只有標題） ===== #}
+{# ===== Section: PageTitleBar ===== #}
 <div class="page-title-bar">
     <h1 class="page-title-bar__title">資料匯入</h1>
 </div>
-{# ===== /PageTitleBar ===== #}
+{# ===== /Section ===== #}
 
 {% set stepPrevHref = "#" %}
 {% set stepNextHref = "#" %}

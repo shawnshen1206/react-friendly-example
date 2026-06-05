@@ -1,15 +1,8 @@
 ---
-# 選了 page-shell，nav / footer / main 容器自動出現（見 layouts/page-shell.html）
 layout: layouts/page-shell.html
 title: GufoFAQ::對話詳細內容
-# 輸出到 dist/ 的檔名（照抄這行，把檔名換成自己的）
 permalink: 4-2_qaHistory_detail.html
 
-# ===== 頁面資料區 =====
-# 「內容」寫成資料、「版型」寫在元件裡 —— 跟 React 的
-# props / .map() 完全相同。工程師轉換時，這些就是 API 的回傳欄位。
-
-# 對話基本資訊（= <QaDetailInfo conversation={...} /> 的 props）
 conversation:
   chatroomId: "6537"
   id: "12173"
@@ -19,7 +12,6 @@ conversation:
   satisfaction: 讚
   feedback: 回答很快也很清楚，謝謝！
 
-# 參考來源（= <SourcesTable sources={[...]} />）。實際 16 筆，示意 3 筆即可。
 sources:
   - no: "12173-1"
     file: vector8_chunk718_20240829024537_111-1021-5-_入出國及法令彙編1671頁.xlsx
@@ -49,17 +41,6 @@ sources:
     note2: 備註文字備註文字
     reference: 來源名稱
 ---
-{# =================================================================
-   頁面：4-2 檢視對話詳細內容
-   -----------------------------------------------------------------
-   頁面檔只做三件事：
-   1. front matter 選 layout、定義頁面資料（上方 YAML）
-   2. include 元件、傳入 props（{% set %}）
-   3. 一次性的版面排列（不重複的區塊直接寫，加 Section 註解）
-   nav / footer 由 page-shell layout 自動提供，這裡只寫中間內容。
-   工程師看這個檔案 = 看到這一頁的 React component tree。
-   ================================================================= #}
-
 {% set breadcrumbItems = [
     { label: "首頁", href: "#" },
     { label: "歷史問答紀錄", href: "#" },
@@ -67,7 +48,7 @@ sources:
 ] %}
 {% include "ui/breadcrumb/breadcrumb.html" %}
 
-{# ===== Section: PageTitleBar（一次性版面，不抽元件） ===== #}
+{# ===== Section: PageTitleBar ===== #}
 <div class="page-title-bar">
     <h1 class="page-title-bar__title">檢視對話詳細內容</h1>
 
@@ -76,7 +57,7 @@ sources:
     {% set pagerItemName = "對話" %}
     {% include "ui/detail-pager/detail-pager.html" %}
 </div>
-{# ===== /PageTitleBar ===== #}
+{# ===== /Section ===== #}
 
 {% include "components/qa-detail-info/qa-detail-info.html" %}
 

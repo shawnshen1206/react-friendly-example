@@ -1,8 +1,3 @@
-/* ===== Component: SourcesTable（大元件） =====
-   對應 React：<SourcesTable sources>
-   表格基底樣式用小元件 ui/data-table，
-   這裡只放自己特有的：欄寬、標題列、手風琴列（SourceAccordionRow）。
-*/
 .sources-table__header {
     display: flex;
     align-items: center;
@@ -20,7 +15,6 @@
     color: var(--color-text-muted);
 }
 
-/* 表格區（內部間距是元件自己的事，外距交給頁面的 .stack） */
 .sources-table__body {
     margin-top: var(--space-4);
 }
@@ -30,12 +24,6 @@
 .sources-table__col-file { min-width: 580px; }
 .sources-table__col-dataset { width: 240px; min-width: 240px; }
 
-/* ===== 子元件: SourceAccordionRow =====
-   一筆來源 = 一個 <tbody class="source-row">
-   is-open = React 的 isExpanded state
-*/
-
-/* 展開鈕：is-open 時換 icon */
 .source-row__toggle {
     width: 1.5rem;
     height: 1.5rem;
@@ -49,7 +37,6 @@
     background-image: url(../images/icon_table_arrow_open.png);
 }
 
-/* 詳細列：預設隱藏 */
 .source-row__detail {
     display: none;
 }
@@ -63,7 +50,6 @@
     border-bottom: 1px solid var(--color-border-default);
 }
 
-/* 詳細內容的內嵌表格 */
 .source-row__detail-table {
     width: 100%;
     border-collapse: collapse;

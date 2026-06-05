@@ -1,7 +1,3 @@
-/* ===== Component: LinkFile =====
-   對應 React：<LinkFile href>（檔案連結，純樣式元件）
-   直接在 markup 寫 <a class="link-file"> 即可。
-*/
 .link-file {
     color: var(--color-primary);
     word-break: break-all;

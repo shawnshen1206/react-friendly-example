@@ -1,11 +1,3 @@
-{# ===== Component: DisclaimerModal =====
-   對應 React：<DisclaimerModal isOpen onClose />
-   使用通用 Modal 外殼（ui/modal/），
-   內容掛 .rich-text（長文排版，見 ui/rich-text/）。
-   開啟按鈕在 app-footer：data-toggle="#disclaimer-modal"
-   注意：Esc 關閉、focus trap 等鍵盤行為屬於互動實作，由工程師在
-   React 完成（通常用現成的 Dialog 元件）；切版只需提供外觀與開關。
-#}
 <div class="modal" id="disclaimer-modal" role="dialog" aria-modal="true" aria-labelledby="disclaimer-modal-title">
     <div class="modal__backdrop" data-toggle="#disclaimer-modal"></div>
     <div class="modal__dialog modal__dialog--md">

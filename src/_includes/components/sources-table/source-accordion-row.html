@@ -1,12 +1,3 @@
-{# ===== Component: SourceAccordionRow =====
-   對應 React：<SourceAccordionRow source={...} />
-   props：source（由 sources-table.html 的 for 迴圈傳入）
-
-   結構說明：一筆來源 = 一個 <tbody>，裡面有「主列 + 詳細列」。
-   用 <tbody> 包起來是為了讓「一筆資料」有單一的元件根節點，
-   點擊展開鈕時只要 toggle 這個 <tbody> 的 is-open 即可。
-   is-open = React 的 isExpanded state。
-#}
 <tbody class="source-row">
     <tr>
         <td class="data-table__cell">
@@ -21,7 +12,6 @@
         <td class="data-table__cell">{{ source.dataset }}</td>
     </tr>
 
-    {# 詳細列：預設隱藏，.source-row.is-open 時顯示 #}
     <tr class="source-row__detail">
         <td colspan="4" class="source-row__detail-cell">
             <table class="source-row__detail-table">
@@ -51,4 +41,3 @@
         </td>
     </tr>
 </tbody>
-{# ===== /SourceAccordionRow ===== #}

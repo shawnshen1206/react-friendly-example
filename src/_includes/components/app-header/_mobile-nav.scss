@@ -1,7 +1,3 @@
-/* ===== Component: MobileNav（AppHeader 的子元件） =====
-   對應 React：<MobileNav items isOpen onClose />
-   is-open = isMenuOpen state。
-*/
 .mobile-nav {
     display: none;
     position: fixed;
@@ -45,7 +41,6 @@
     position: absolute;
 }
 
-/* 子選單：父層 li 有 is-open 才顯示 */
 .mobile-nav__submenu {
     display: none;
 }
@@ -67,8 +62,6 @@
     padding: var(--space-3) var(--space-10);
 }
 
-/* 只在平板以下允許開啟。捲動鎖定也限定在這個寬度內——
-   否則選單開著時拉寬視窗，選單被 media query 隱藏，body 卻仍被鎖住滑不動 */
 @media screen and (max-width: 1200px) {
     .mobile-nav.is-open {
         display: block;

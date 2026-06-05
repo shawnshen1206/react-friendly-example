@@ -1,19 +1,6 @@
-{# ===== Component: Breadcrumb =====
-   對應 React：<Breadcrumb items={[...]} />
-   props：breadcrumbItems —— 在頁面 include 之前用 {% set %} 傳入：
-
-   {% set breadcrumbItems = [
-       { label: "首頁", href: "./index.html" },
-       { label: "目前頁面" }
-   ] %}
-   {% include "ui/breadcrumb/breadcrumb.html" %}
-
-   沒有 href 的項目代表目前所在頁（純文字、不可點）。
-#}
 <nav class="breadcrumb" aria-label="麵包屑導覽">
     <ul class="breadcrumb__list">
         {% for item in breadcrumbItems %}
-        {# 沒有 href 的項目 = 目前所在頁，標上 aria-current #}
         <li class="breadcrumb__item"{% if not item.href %} aria-current="page"{% endif %}>
             {% if item.href %}
             <a href="{{ item.href }}" class="breadcrumb__link">{{ item.label }}</a>
@@ -24,4 +11,3 @@
         {% endfor %}
     </ul>
 </nav>
-{# ===== /Breadcrumb ===== #}

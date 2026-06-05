@@ -1,8 +1,3 @@
-/* ===== Component: MainNav（AppHeader 的子元件） =====
-   對應 React：<MainNav items />
-   原版用 superfish(jQuery) 做下拉，這裡改用純 CSS :hover /
-   :focus-within，轉 React 時不需要替換任何套件。
-*/
 .main-nav__list {
     display: flex;
     gap: var(--space-5);
@@ -33,7 +28,6 @@
     padding-left: var(--space-4);
 }
 
-/* 下拉子選單：hover 或鍵盤 focus 時顯示（取代 superfish） */
 .main-nav__submenu {
     display: none;
     position: absolute;
@@ -67,7 +61,6 @@
     background-color: var(--color-primary-light);
 }
 
-/* 平板以下整組隱藏，改用 MobileNav */
 @media screen and (max-width: 1200px) {
     .main-nav {
         display: none;

@@ -1,25 +1,3 @@
-/* ===== Component: FormTable =====
-   對應 React：<FormTable> / <FormTableField label width>
-   -----------------------------------------------------------------
-   「標籤 + 值」的表單式表格（模擬 table）。純樣式元件：
-   結構簡單且每頁內容不同，直接在使用它的元件裡寫 markup。
-
-   結構範例：
-   <div class="form-table">
-     <section class="form-table__group">
-       <h2 class="form-table__subtitle">群組標題</h2>
-       <div class="form-table__row">
-         <div class="form-table__field form-table__field--half">
-           <div class="form-table__label">欄位名</div>
-           <div class="form-table__value">欄位值</div>
-         </div>
-       </div>
-     </section>
-   </div>
-
-   寬度變體（= React 的 width prop）：
-   --full（100%，預設）、--half（50%）、--third（33%）
-*/
 .form-table {
     display: flex;
     flex-direction: column;
@@ -85,7 +63,6 @@
     object-fit: contain;
 }
 
-/* 手機版全部直排 */
 @media screen and (max-width: 768px) {
     .form-table__field--half,
     .form-table__field--third {

@@ -1,15 +1,3 @@
-{# ===== Component: QaDetailInfo（大元件） =====
-   對應 React：<QaDetailInfo conversation={...} />
-   props：conversation —— 來自頁面 front matter，工程師轉換時
-   這個物件就是 API 回傳的對話資料。
-   組合了 Button、FormTable、RichText，本身沒有自己的 SCSS。
-
-   注意：「AI對話內容」在正式系統是 Markdown 動態渲染，
-   所以內容直接寫在元件裡並掛 .rich-text（樣式在 _rich-text.scss）
-   ——設計師要定義的是「渲染出來的長文長什麼樣」，不是資料本身。
-#}
-{# 根節點掛 .qa-detail-info（= 元件名），即使沒有自己的樣式也要掛，
-   讓工程師從 DOM 一眼對應到元件 #}
 <section class="qa-detail-info block block--sm">
     <div class="text-right mb-4">
         <button type="button" class="button button--green" data-action="print">列印此頁</button>
@@ -23,7 +11,6 @@
                     <div class="form-table__label">使用者滿意度</div>
                     <div class="form-table__value">
                         <strong>{{ conversation.satisfaction }}</strong>
-                        {# icon 跟著滿意度值走：React 由 satisfaction 決定 good/bad icon #}
                         <img src="./images/icon_good.png" alt="" class="form-table__icon">
                     </div>
                 </div>
@@ -62,7 +49,6 @@
                 <div class="form-table__field">
                     <div class="form-table__label">AI對話內容</div>
                     <div class="form-table__value">
-                        {# 這一塊在 React 是 markdown renderer 的輸出 #}
                         <div class="rich-text">
                             <p>您好！關於新住民結婚的注意事項，以下是一些重要的要點：</p>
                             <h3>1. 申請結婚登記</h3>
@@ -99,4 +85,3 @@
         </section>
     </div>
 </section>
-{# ===== /QaDetailInfo ===== #}
