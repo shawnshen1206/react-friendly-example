@@ -8,6 +8,7 @@ export default function (eleventyConfig) {
         "src/_includes/components/mobile-nav/mobile-nav.js": "js/mobile-nav.js",
         "src/_includes/ui/accordion/accordion.js": "js/accordion.js",
         "src/_includes/ui/pagination-input/pagination-input.js": "js/pagination-input.js",
+        "src/_includes/ui/multi-select/multi-select.js": "js/multi-select.js",
     });
 
     eleventyConfig.setServerOptions({

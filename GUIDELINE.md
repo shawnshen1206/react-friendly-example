@@ -147,9 +147,13 @@ ui/pagination-input/
 1. `eleventy.config.js`：passthrough 清單加 `"src/_includes/桶/元件/元件.js": "js/元件.js"`
 2. `layouts/base.html`：script 清單加 `<script defer src="./js/元件.js"></script>`
 
+### tag 多選（`ui/multi-select`）
+
+切版需要展示互動，所以 tag 式多選由本範本提供：在原生 `<select multiple class="multiSelect">` 上加 `ui/multi-select/multi-select.js`，增強成標籤（可 `×` 移除）＋下拉複選（不關閉）＋搜尋過濾＋placeholder。**原生 `<select>` 仍是唯一資料來源**——操作都寫回它的 `option.selected` 並觸發 `change`。轉 React 時對應 `react-select`（isMulti），value 陣列＝原生 select 的選取。
+
 ### 不在切版範圍的互動
 
-select2 類多選、日期選擇、表單驗證、資料載入：保留原生元素或靜態外觀（例：多選用原生 `<select multiple>` 佔位），由 React 套件實作。
+日期選擇、表單驗證、資料載入：保留原生元素或靜態外觀，由 React 套件實作。
 
 ---
 
@@ -162,7 +166,7 @@ select2 類多選、日期選擇、表單驗證、資料載入：保留原生元
 | `ui/breadcrumb` | include 前 `{% set breadcrumbItems = [{ label, href }] %}`；最後一項不給 `href` = 目前頁 |
 | `ui/pagination-input` | include 前 set `pagerCurrent`、`pagerTotal` |
 | `components/step-btn-wrap` | front matter `steps:`（`label`、`done`）；include 前 set `stepPrevHref`、`stepNextHref` |
-| `components/multi-select-box` | front matter `fields:`（`label`、`placeholder`、`options`（`text`/`selected`）、`preview`、`error` 選填） |
+| `components/multi-select-box` | front matter `fields:`（`label`、`placeholder`、`options`（`text`/`selected`）、`preview`、`error` 選填）；左欄的 `<select class="multiSelect">` 由 `ui/multi-select` 增強成 tag 多選 |
 | `components/sources-block` | front matter `sources:`（`no`、`file`、`dataset`、`title`、`time`、`content`、`note1`、`note2`、`reference`）；每筆用子元件 `source-row.html` 渲染。外層的 `.sources-block` 是設計師原有的語意／JS 鉤子 class，本身不帶樣式（視覺來自 `.block` + default-table），刻意保留 |
 | `components/qa-detail-info` | front matter `conversation:`（`chatroomId`、`id`、`time`、`intent`、`userMessage`、`satisfaction`、`feedback`）；AI 回答內容為長文示範，依 §3-2 寫死在元件 |
 
@@ -173,8 +177,8 @@ select2 類多選、日期選擇、表單驗證、資料載入：保留原生元
 
 ### 純樣式 / 純行為元件（直接寫 class）
 
-`button`、`block`、`default-table`、`form-group`、`form-table`、`link-file`、`modals`、`accordion`。
-結構以兩個範例頁為準。
+`button`、`block`、`default-table`、`form-group`、`form-table`、`link-file`、`modals`、`accordion`、`multi-select`。
+結構以兩個範例頁為準（`multi-select` 無 html，靠 js 增強 `.multiSelect`）。
 
 ---
 
@@ -191,7 +195,7 @@ select2 類多選、日期選擇、表單驗證、資料載入：保留原生元
 | front matter 資料 + `{% for %}` | `data.map(item => <Row item={item} />)` |
 | `.open`、`.active`、`.done`、`.error` 狀態 class | `useState` 布林 / props（`className={open ? "x open" : "x"}`） |
 | `<dialog>` + `showModal()` | React 可沿用 dialog，或換 Dialog 元件 |
-| 原生 `<select multiple>` 佔位 | react-select 等多選套件 |
+| `ui/multi-select`（增強原生 `<select multiple>`） | `react-select`（isMulti）；value 陣列＝原生 select 的選取，行為（標籤／搜尋／複選）即規格 |
 | `_var.scss` 顏色變數 | 映射到 Tailwind theme（v4 `@theme`、v3 `theme.colors`），utility 直接用 `text-primary`、`bg-primary-light` 等 |
 
 accordion 的「一次只開一列」在本範本用全域 DOM 查詢（`document.querySelectorAll(".accordion-btn.open")`）實作，跨整頁所有表格。轉 React 時改由各 accordion 元件自管狀態（記住開啟的列 index），不要跨元件共用，否則同頁多個表格會互相關閉。
