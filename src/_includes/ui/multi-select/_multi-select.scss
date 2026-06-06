@@ -1,0 +1,116 @@
+@use "../../../scss/mixin" as *;
+
+.multi-select {
+    position: relative;
+    width: 100%;
+}
+
+// 原生 select 隱藏，只當資料來源
+.multi-select-native {
+    display: none;
+}
+
+// 控制框：外觀對齊 form-control，裝標籤與搜尋輸入
+.multi-select-control {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 56px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border: 1px solid var(--color-border-default);
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: text;
+    transition: all 0.3s;
+
+    .multi-select.open & {
+        border: 1px solid var(--color-info);
+    }
+}
+
+.multi-select-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    line-height: 1.375;
+    color: var(--color-primary-dark);
+    background-color: var(--color-primary-light);
+    border-radius: 4px;
+}
+
+.multi-select-tag-remove {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--color-primary-dark);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.multi-select-search {
+    flex: 1 1 4rem;
+    min-width: 4rem;
+    border: 0;
+    outline: none;
+    padding: 0.25rem;
+    font-size: 1rem;
+    line-height: 1.375;
+    background: transparent;
+    color: var(--color-text-default);
+
+    &::placeholder {
+        color: var(--color-text-dark);
+    }
+}
+
+.multi-select-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    max-height: 240px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid var(--color-border-default);
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+
+    @include scrollbar_thin();
+
+    .multi-select.open & {
+        display: block;
+    }
+}
+
+.multi-select-option {
+    padding: 0.5rem 0.75rem;
+    box-sizing: border-box;
+    color: var(--color-text-default);
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-gray-200);
+    }
+
+    &.selected {
+        color: var(--color-primary);
+        background-color: var(--color-primary-light);
+
+        &::after {
+            content: "✓";
+            float: right;
+        }
+    }
+}
+
+.multi-select-empty {
+    padding: 0.5rem 0.75rem;
+    color: var(--color-text-dark);
+}
